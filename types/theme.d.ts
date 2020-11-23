@@ -1,11 +1,11 @@
-import "styled-components";
+import 'styled-components';
 import {
   PaletteColorOptions,
   ThemeOptions,
   TypeBackground,
-} from "@material-ui/core/styles";
+} from '@material-ui/core/styles';
 
-declare module "styled-components" {
+declare module 'styled-components' {
   export interface DefaultTheme extends ThemeOptions {
     palette: {
       primary: PaletteColorOptions;

@@ -1,8 +1,8 @@
-import React from "react";
-import { Project as ProjectType } from "types/models";
-import { StyledProjects } from "./Projects.styles";
-import Project from "./Project";
-import Grid from "@material-ui/core/Grid";
+import React from 'react';
+import { Project as ProjectType } from 'types/models';
+import { StyledProjects } from './Projects.styles';
+import Project from './Project';
+import Grid from '@material-ui/core/Grid';
 
 type Props = {
   projects: ProjectType[];

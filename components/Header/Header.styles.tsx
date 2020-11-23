@@ -15,17 +15,34 @@ export const StyledHeader = styled.div`
     }
     .map {
       min-width: 100%;
+
+      .leaflet-control-attribution {
+        a {
+          font-size: 1em;
+          color: white;
+        }
+      }
     }
-    .hero-text {
+    .MuiToolbar-root {
+      color: white;
+    }
+    .hero-text .MuiTypography-root {
       color: #73828b;
+      text-shadow: 1px 1px 2px #73828b;
       margin-bottom: 40px;
       padding-left: 20px;
     }
-    .language-selector {
+    .links a {
+      padding: 20px;
+    }
+    a {
       color: white;
-      /* flex-grow: 1; */
       font-size: 2em;
-      right: 20;
+      text-decoration: none;
+    }
+    .language-selector {
+      padding-left: 20px;
+      /* right: 20; */
     }
   `}
 `;

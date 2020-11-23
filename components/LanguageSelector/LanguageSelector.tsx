@@ -3,12 +3,7 @@ import styled from 'styled-components';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 
-const StyledLanguageSelector = styled.div`
-  a {
-    color: white;
-    text-decoration: none;
-  }
-`;
+const StyledLanguageSelector = styled.div``;
 
 const LanguageSelector = () => {
   const { locale, locales, pathname } = useRouter();

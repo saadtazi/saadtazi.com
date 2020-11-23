@@ -2,7 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { IntlProvider } from 'react-intl';
-import { localesData, LocalesData } from 'content/locale';
+import { localesData, LocalesData, flattenMessages } from 'content/locale';
 import { ThemeProvider as MUIThemeProvider } from '@material-ui/core/styles';
 import { ThemeProvider as SCThemeProvider } from 'styled-components';
 
@@ -15,10 +15,9 @@ type MyAppProp = {
 };
 const MyApp: React.FC<MyAppProp> = (props) => {
   const { Component, pageProps } = props;
-  const { locale, defaultLocale, pathname } = useRouter();
+  const { locale, defaultLocale } = useRouter();
   const currentLocale = (locale || defaultLocale || 'en') as keyof LocalesData;
-  const localeCopy = localesData[currentLocale];
-  const messages = localeCopy[pathname];
+  const messages = flattenMessages(localesData[currentLocale]);
 
   React.useEffect(() => {
     // Remove the server-side injected CSS.

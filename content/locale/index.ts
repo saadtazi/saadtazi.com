@@ -18,3 +18,26 @@ export const projects: ProjectsData = {
   en: enProjects,
   fr: frProjects,
 };
+
+type flattenedMessages = { [k: string]: string };
+
+export function flattenMessages(
+  nestedMessages: { [k: string]: string | any },
+  prefix = ''
+): flattenedMessages {
+  return Object.keys(nestedMessages).reduce<flattenedMessages>(
+    (messages, key) => {
+      let value = nestedMessages[key];
+      let prefixedKey = prefix ? `${prefix}.${key}` : key;
+
+      if (typeof value === 'string') {
+        messages[prefixedKey] = value;
+      } else {
+        Object.assign(messages, flattenMessages(value, prefixedKey));
+      }
+
+      return messages;
+    },
+    {}
+  );
+}

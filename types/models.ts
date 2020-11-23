@@ -6,14 +6,12 @@ export type ProjectLink = {
 export type Project = {
   name: string;
   lead: string;
-  features: string[];
+  features?: string[];
   tags: string[];
   links: ProjectLink[];
 };
 
 export type Locale = 'en' | 'fr';
 export type LocaleData = {
-  [a: string]: {
-    [k: string]: string;
-  };
+  [a: string]: string | LocaleData;
 };
