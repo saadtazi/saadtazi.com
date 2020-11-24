@@ -1,3 +1,19 @@
+## setup
+
+```
+cp .env.example.local .env.local
+vi .env.local # edit
+yarn
+```
+
+## run - dev
+
+```
+yarn dev
+```
+
+---
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started

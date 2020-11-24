@@ -6,6 +6,7 @@ import Tooltip from '@material-ui/core/Tooltip';
 import useTranslate from 'hooks/translate';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import * as gtag from 'src/gtag';
 
 const SpeechRecognition: React.FC = () => {
   const t = useTranslate();
@@ -23,6 +24,11 @@ const SpeechRecognition: React.FC = () => {
   }
 
   const onListen = () => {
+    gtag.event({
+      action: 'activate',
+      category: 'SpeechRecognition',
+      label: 'activate speech recognition',
+    });
     listen({ lang: 'en-US', continuous: true });
   };
 
@@ -40,12 +46,12 @@ const SpeechRecognition: React.FC = () => {
             onMouseDown={onListen}
             onMouseUp={stop}
           >
-            Press and talk...
+            {t('speechRecognition.activate')}
           </Button>
         </div>
         <div>
           <TextField
-            label="Ouput"
+            label={t('speechRecognition.output')}
             multiline
             rowsMax={4}
             value={value}

@@ -22,7 +22,14 @@ export const en: LocaleData = {
     secondary: 'secondary',
   },
   windowSize: { widthAndHeight: 'width x height (px)' },
-  speechSyntesis: { title: 'speech synthesis' },
-  speechRecognition: { title: 'speech recognition' },
+  speechSynthesis: {
+    title: 'speech synthesis',
+    textPlaceholder: 'type some text...',
+  },
+  speechRecognition: {
+    title: 'speech recognition',
+    activate: 'Press and talk...',
+    output: 'Output',
+  },
   errors: { message404: "NooOooOOooo... We're lost.", backTo: 'back to' },
 };

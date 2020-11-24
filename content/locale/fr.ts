@@ -22,8 +22,15 @@ export const fr: LocaleData = {
     secondary: 'secondaire',
   },
   windowSize: { widthAndHeight: 'largeur x hauteur (px)' },
-  speechSyntesis: { title: 'synthèse vocale' },
-  speechRecognition: { title: 'reconnaissance vocale' },
+  speechSynthesis: {
+    title: 'synthèse vocale',
+    textPlaceholder: 'Tapez quelque chose...',
+  },
+  speechRecognition: {
+    title: 'reconnaissance vocale',
+    activate: 'Appuyez et parlez...',
+    output: 'Résultat',
+  },
   errors: {
     message404: 'NooOooOOooon... Nous sommes perdus.',
     backTo: "retour à l'",

@@ -5,7 +5,7 @@ import { IntlProvider } from 'react-intl';
 import { localesData, LocalesData, flattenMessages } from 'content/locale';
 import { ThemeProvider as MUIThemeProvider } from '@material-ui/core/styles';
 import { ThemeProvider as SCThemeProvider } from 'styled-components';
-
+import * as gtag from 'src/gtag';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import theme from 'src/theme';
 
@@ -15,7 +15,7 @@ type MyAppProp = {
 };
 const MyApp: React.FC<MyAppProp> = (props) => {
   const { Component, pageProps } = props;
-  const { locale, defaultLocale } = useRouter();
+  const { locale, defaultLocale, events: routerEvents } = useRouter();
   const currentLocale = (locale || defaultLocale || 'en') as keyof LocalesData;
   const messages = flattenMessages(localesData[currentLocale]);
 
@@ -27,10 +27,20 @@ const MyApp: React.FC<MyAppProp> = (props) => {
     }
   }, []);
 
+  React.useEffect(() => {
+    const handleRouteChange = (url: URL) => {
+      gtag.pageview(url);
+    };
+    routerEvents.on('routeChangeComplete', handleRouteChange);
+    return () => {
+      routerEvents.off('routeChangeComplete', handleRouteChange);
+    };
+  }, [routerEvents]);
+
   return (
     <React.Fragment>
       <IntlProvider
-        locale={locale as string}
+        locale={currentLocale as string}
         defaultLocale={defaultLocale}
         messages={messages}
       >

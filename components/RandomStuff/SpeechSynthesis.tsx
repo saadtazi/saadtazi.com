@@ -16,6 +16,7 @@ import IconButton from '@material-ui/core/IconButton';
 import { StyledRandomItem } from './RandomStuff.styles';
 import Tooltip from '@material-ui/core/Tooltip';
 import useTranslate from 'hooks/translate';
+import * as gtag from 'src/gtag';
 
 function getVoiceLabel(voice: SpeechSynthesisVoice) {
   const label = `${voice.name} - ${voice.lang}`;
@@ -61,6 +62,15 @@ const SpeechSynthesis: React.FC = () => {
     {}
   );
 
+  const onPlayClick = () => {
+    gtag.event({
+      action: 'click',
+      category: 'speechSynthesis',
+      label: 'activate speech synthesis',
+    });
+    speak({ text: value, voice: voice || voices[0] });
+  };
+
   if (!supported) {
     return <>Speech is not supported. Upgrade your browser</>;
   }
@@ -68,7 +78,7 @@ const SpeechSynthesis: React.FC = () => {
   return (
     <StyledRandomItem>
       <div className="icon">
-        <Tooltip placement="right" title={t('speechSyntesis.title')}>
+        <Tooltip placement="right" title={t('speechSynthesis.title')}>
           <MicIcon />
         </Tooltip>
       </div>
@@ -101,7 +111,7 @@ const SpeechSynthesis: React.FC = () => {
           </div>
           <div>
             <TextField
-              label="Type some text..."
+              label={t('speechSynthesis.textPlaceholder')}
               multiline
               rowsMax={4}
               value={value}
@@ -116,7 +126,7 @@ const SpeechSynthesis: React.FC = () => {
             <IconButton
               disabled={!voice || !value}
               type="button"
-              onClick={() => speak({ text: value, voice: voice || voices[0] })}
+              onClick={onPlayClick}
             >
               <PlayArrowIcon />
             </IconButton>
