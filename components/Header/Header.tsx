@@ -7,7 +7,11 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Link from 'next/link';
 import useTranslate from 'hooks/translate';
 
-const Header: React.FC = ({ children }) => {
+type Props = {
+  disableMap?: boolean;
+};
+
+const Header: React.FC<Props> = ({ disableMap, children }) => {
   const t = useTranslate();
   return (
     <StyledHeader>
@@ -17,6 +21,9 @@ const Header: React.FC = ({ children }) => {
             <Link href="/">{t('home')}</Link>
           </div>
           <div className="links">
+            <Link href="/murales">{t('murales.navItem')}</Link> -
+          </div>
+          <div className="links">
             <Link href="/stuff">{t('stuff')}</Link> -
           </div>
           <div className="language-selector">
@@ -24,11 +31,13 @@ const Header: React.FC = ({ children }) => {
           </div>
         </Toolbar>
       </AppBar>
-      <div className="map-container">
-        <div className="map">
-          <GeolocatedMap />
+      {!disableMap && (
+        <div className="map-container">
+          <div className="map">
+            <GeolocatedMap />
+          </div>
         </div>
-      </div>
+      )}
       {children}
     </StyledHeader>
   );

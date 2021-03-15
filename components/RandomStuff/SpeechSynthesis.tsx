@@ -28,11 +28,8 @@ const SpeechSynthesis: React.FC = () => {
   const [value, setValue] = React.useState('');
   const [, setEnded] = React.useState(false);
   const [voice, setVoice] = React.useState<SpeechSynthesisVoice>();
-  const onBoundary = (event: any) => {
-    // console.log(
-    //   `${event.name} boundary reached after ${event.elapsedTime} milliseconds.`
-    // );
-  };
+
+  const onBoundary = (event: any) => {};
   const onEnd = () => setEnded(true);
   const onError = (event: any) => {
     console.warn(event);

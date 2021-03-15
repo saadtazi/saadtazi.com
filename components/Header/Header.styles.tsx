@@ -2,6 +2,9 @@ import styled, { css } from 'styled-components';
 
 export const StyledHeader = styled.div`
   ${({ theme }) => css`
+
+    background-color: #000;
+
     .top-nav .title {
       flex-grow: 1;
     }

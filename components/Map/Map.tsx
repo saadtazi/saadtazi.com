@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import L, { LatLngExpression } from 'leaflet';
 import RoomIcon from '@material-ui/icons/Room';
+import { getIcon } from 'utils/leaflet';
 import {
   MapContainer,
   TileLayer,
@@ -17,10 +18,7 @@ type MapProps = {
   containerOptions?: Partial<MapContainerProps>;
 };
 
-const icon = L.divIcon({
-  className: 'custom-icon',
-  html: ReactDOMServer.renderToString(<RoomIcon style={{ color: 'white' }} />),
-});
+const icon = getIcon('white');
 
 const Map: React.FC<MapProps> = ({ center, containerOptions }) => {
   if (!center) {
@@ -29,7 +27,6 @@ const Map: React.FC<MapProps> = ({ center, containerOptions }) => {
   return (
     <StyledMap>
       <MapContainer
-        // zoomControl={false}
         {...containerOptions}
         center={center}
         zoom={13}

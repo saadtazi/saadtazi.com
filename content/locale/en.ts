@@ -31,5 +31,13 @@ export const en: LocaleData = {
     activate: 'Press and talk...',
     output: 'Output',
   },
+  murales: {
+    navItem: 'murals',
+    from: 'from {link}',
+    by: 'by {artist}',
+    mtlDonneesOuvertes: 'Montreal Données Ouvertes',
+    mtlDonneesOuvertesLink:
+      'https://donnees.montreal.ca/ville-de-montreal/murales',
+  },
   errors: { message404: "NooOooOOooo... We're lost.", backTo: 'back to' },
 };
