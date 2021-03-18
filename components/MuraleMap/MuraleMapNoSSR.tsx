@@ -1,5 +1,5 @@
 import React from 'react';
-import { MapContainer, TileLayer, GeoJSON } from 'react-leaflet';
+import { MapContainer, TileLayer, GeoJSON, useMap } from 'react-leaflet';
 import { MuraleInfo, MuraleInfoCard } from './MuraleInfo';
 import { getDefaultIcon, getMarker } from 'utils/leaflet';
 import 'leaflet/dist/leaflet.css';
@@ -13,9 +13,25 @@ import { useWindowSize } from 'react-use';
 
 const MtlCenter: LatLngExpression = [45.5017, -73.5673];
 
+const CenterOnMarkerClick: React.FC<{
+  latlng: LatLngExpression | undefined;
+}> = ({ latlng }) => {
+  const map = useMap();
+  React.useEffect(() => {
+    if (latlng) {
+      map.setView(latlng, map.getZoom(), {
+        animate: true,
+      });
+    }
+  }, [map, latlng]);
+
+  return null;
+};
+
 const MuraleMap: React.FC = () => {
   const [murale, setMurale] = React.useState<Murale>();
   const { height } = useWindowSize();
+
   const onMarkerClick = (geoJsonFeature: MuraleGeoJSON) => () => {
     setMurale(fromFeature(geoJsonFeature));
   };
@@ -29,6 +45,7 @@ const MuraleMap: React.FC = () => {
         zoom={13}
         scrollWheelZoom={false}
         center={center}
+        trackResize
       >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -50,6 +67,7 @@ const MuraleMap: React.FC = () => {
             );
           }}
         />
+        <CenterOnMarkerClick latlng={murale && getCenter(murale)} />
       </MapContainer>
       {murale && (
         <MuraleInfoCard murale={murale} onClose={() => setMurale(undefined)} />
