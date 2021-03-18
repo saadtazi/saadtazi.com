@@ -35,11 +35,19 @@ export const StyledHeader = styled.div`
     .MuiToolbar-root {
       color: white;
     }
-    .hero-text .MuiTypography-root {
-      color: #73828b;
-      text-shadow: 1px 1px 2px #73828b;
-      margin-bottom: 40px;
-      padding-left: 20px;
+    .hero-text {
+      ${() => theme?.breakpoints?.down('xs')} {
+        h2 {
+          font-size: 2.75em;
+        }
+      }
+
+      .MuiTypography-root {
+        color: #73828b;
+        text-shadow: 1px 1px 2px #73828b;
+        margin-bottom: 40px;
+        padding-left: 20px;
+      }
     }
     .links a {
       padding: 20px;
