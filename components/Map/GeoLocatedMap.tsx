@@ -1,6 +1,6 @@
-import dynamic from "next/dynamic";
+import dynamic from 'next/dynamic';
 
-const GeoLocatedMap = dynamic(() => import("./GeoLocatedMapNoSSR"), {
+const GeoLocatedMap = dynamic(() => import('./GeoLocatedMapNoSSR'), {
   ssr: false,
 });
 

@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
-import useGeolocation from "react-use/lib/useGeolocation";
-import { LatLngExpression } from "leaflet";
-import Map from "./Map";
+import React from 'react';
+import useGeolocation from 'react-use/lib/useGeolocation';
+import { LatLngExpression } from 'leaflet';
+import Map from './Map';
 
 const GeLocatedMap: React.FC = () => {
   const state = useGeolocation();

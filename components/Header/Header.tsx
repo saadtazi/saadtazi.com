@@ -2,6 +2,7 @@ import React from 'react';
 import GeolocatedMap from 'components/Map/GeoLocatedMap';
 import LanguageSelector from 'components/LanguageSelector/LanguageSelector';
 import { StyledHeader } from './Header.styles';
+import { StyledNoMap } from '../Map/Map.styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Link from 'next/link';
@@ -31,7 +32,11 @@ const Header: React.FC<Props> = ({ disableMap, children }) => {
           </div>
         </Toolbar>
       </AppBar>
-      {!disableMap && (
+      {disableMap ? (
+        <div className="no-map">
+          <StyledNoMap />
+        </div>
+      ) : (
         <div className="map-container">
           <div className="map">
             <GeolocatedMap />

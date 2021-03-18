@@ -1,7 +1,5 @@
 import React from 'react';
-import ReactDOMServer from 'react-dom/server';
-import L, { LatLngExpression } from 'leaflet';
-import RoomIcon from '@material-ui/icons/Room';
+import { LatLngExpression } from 'leaflet';
 import { getIcon } from 'utils/leaflet';
 import {
   MapContainer,

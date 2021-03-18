@@ -2,9 +2,6 @@ import styled, { css } from 'styled-components';
 
 export const StyledHeader = styled.div`
   ${({ theme }) => css`
-
-    background-color: #000;
-
     .top-nav .title {
       flex-grow: 1;
     }
@@ -16,9 +13,18 @@ export const StyledHeader = styled.div`
       bottom: 0;
       z-index: -1;
     }
+
+    .no-map {
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      z-index: -1;
+    }
+
     .map {
       min-width: 100%;
-
       .leaflet-control-attribution {
         a {
           font-size: 1em;
