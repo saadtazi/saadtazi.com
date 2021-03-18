@@ -1,11 +1,10 @@
 import React from 'react';
 import GeolocatedMap from 'components/Map/GeoLocatedMap';
-import LanguageSelector from 'components/LanguageSelector/LanguageSelector';
+import Menu from './Menu';
 import { StyledHeader } from './Header.styles';
 import { StyledNoMap } from '../Map/Map.styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import Link from 'next/link';
 import useTranslate from 'hooks/translate';
 
 type Props = {
@@ -18,18 +17,7 @@ const Header: React.FC<Props> = ({ disableMap, children }) => {
     <StyledHeader>
       <AppBar position="static" className="top-nav" color="transparent">
         <Toolbar>
-          <div className="title">
-            <Link href="/">{t('home')}</Link>
-          </div>
-          <div className="links">
-            <Link href="/murales">{t('murales.navItem')}</Link> -
-          </div>
-          <div className="links">
-            <Link href="/stuff">{t('stuff')}</Link> -
-          </div>
-          <div className="language-selector">
-            <LanguageSelector />
-          </div>
+          <Menu />
         </Toolbar>
       </AppBar>
       {disableMap ? (

@@ -49,9 +49,5 @@ export const StyledHeader = styled.div`
       font-size: 2em;
       text-decoration: none;
     }
-    .language-selector {
-      padding-left: 20px;
-      /* right: 20; */
-    }
   `}
 `;
