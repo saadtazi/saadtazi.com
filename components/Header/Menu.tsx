@@ -59,6 +59,7 @@ const SmallMenu = () => {
         keepMounted
         open={Boolean(anchorEl)}
         onClose={handleClose}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
       >
         <StyledSmallMenu>
           <MenuItem onClick={handleClose} href="/">

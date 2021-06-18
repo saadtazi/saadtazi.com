@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 
 export const StyledPersonalLinks = styled.div`
   ${({ theme }) => css`
+    z-index: 1000;
     position: fixed;
     bottom: 10px;
     right: 10px;

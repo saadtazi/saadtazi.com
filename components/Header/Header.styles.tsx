@@ -36,7 +36,7 @@ export const StyledHeader = styled.div`
       color: white;
     }
     .hero-text {
-      ${() => theme?.breakpoints?.down('xs')} {
+      ${() => theme?.breakpoints?.down?.('xs')} {
         h2 {
           font-size: 2.75em;
         }
