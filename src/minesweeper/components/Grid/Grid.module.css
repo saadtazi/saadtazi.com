@@ -1,0 +1,26 @@
+.grid {
+  font-family: courier, courier new, serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.row {
+  display: flex;
+  flex-direction: row;
+
+  align-items: center;
+  justify-content: center;
+  flex: 1 0 auto;
+}
+
+.cell {
+  background-color: lightseagreen;
+  flex: 1 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  /* margin: 1px; */
+  border: 1px solid black;
+}

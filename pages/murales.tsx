@@ -1,16 +1,14 @@
-import React from 'react';
-import useLocale from 'hooks/locale';
-import Container from '@material-ui/core/Container';
-import Header from 'components/Header/Header';
-import PersonalLinks from 'components/PersonalLinks/PersonalLinks';
-import MuraleMap from 'components/MuraleMap/MuraleMap';
-import Typography from '@material-ui/core/Typography';
+import React from "react";
+import Container from "@mui/material/Container";
+import Header from "components/Header/Header";
+import PersonalLinks from "components/PersonalLinks/PersonalLinks";
+import MuraleMap from "components/MuraleMap/MuraleMap";
+import Typography from "@mui/material/Typography";
 
-import useTranslate from 'hooks/translate';
-import { FormattedMessage } from 'react-intl';
+import useTranslate from "hooks/translate";
+import { FormattedMessage } from "react-intl";
 
 export default function Index() {
-  const locale = useLocale();
   const t = useTranslate();
   return (
     <>
@@ -21,11 +19,15 @@ export default function Index() {
           </Typography>
           <Typography component="h4" style={{ paddingBottom: 40 }}>
             <FormattedMessage
-              id={'murales.from'}
+              id={"murales.from"}
               values={{
                 link: (
-                  <a target="_blank" href={t('murales.mtlDonneesOuvertesLink')}>
-                    {t('murales.mtlDonneesOuvertes')}
+                  <a
+                    rel="noreferrer"
+                    target="_blank"
+                    href={t("murales.mtlDonneesOuvertesLink")}
+                  >
+                    {t("murales.mtlDonneesOuvertes")}
                   </a>
                 ),
               }}
