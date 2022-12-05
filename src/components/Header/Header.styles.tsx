@@ -1,6 +1,7 @@
-import styled from "@emotion/styled";
-import { Theme } from "@mui/material/styles";
-export const StyledHeader = styled.div`
+import { styled } from '@mui/material/styles';
+import { Theme } from '@mui/material/styles';
+
+export const StyledHeader = styled('div')`
   ${({ theme }: { theme: Theme }) => `
     .top-nav {
       background-color: #090909;
@@ -41,7 +42,7 @@ export const StyledHeader = styled.div`
     }
     .hero-text {
       color: #090909;
-      ${theme?.breakpoints?.down?.("xs")} {
+      ${theme?.breakpoints?.down?.('xs')} {
         h2 {
           font-size: 2.75em;
         }

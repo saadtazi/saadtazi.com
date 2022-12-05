@@ -1,12 +1,11 @@
 // import styled from 'styled-components';
-import { useBattery } from "react-use";
-import styled from "styled-components";
-import BatteryUnknownIcon from "@mui/icons-material/BatteryUnknown";
-import BatteryChargingFullIcon from "@mui/icons-material/BatteryChargingFull";
-import BatteryFullIcon from "@mui/icons-material/BatteryFull";
-import Tooltip from "@mui/material/Tooltip";
-import useTranslate from "hooks/translate";
-import { StyledRandomItem } from "./RandomStuff.styles";
+import { useBattery } from 'react-use';
+import BatteryUnknownIcon from '@mui/icons-material/BatteryUnknown';
+import BatteryChargingFullIcon from '@mui/icons-material/BatteryChargingFull';
+import BatteryFullIcon from '@mui/icons-material/BatteryFull';
+import Tooltip from '@mui/material/Tooltip';
+import useTranslate from 'hooks/translate';
+import { StyledRandomItem } from './RandomStuff.styles';
 
 const Battery = () => {
   const t = useTranslate();
@@ -31,17 +30,17 @@ const Battery = () => {
         {charging ? <BatteryChargingFullIcon /> : <BatteryFullIcon />}
       </div>
       <div className="info">
-        <Tooltip placement="right" title={t("battery.chargeLevel")}>
+        <Tooltip placement="right" title={t('battery.chargeLevel')}>
           <div className="charge-level">{chargeLevel}%</div>
         </Tooltip>
-        <Tooltip placement="right" title={t("battery.chargingTime")}>
+        <Tooltip placement="right" title={t('battery.chargingTime')}>
           <div className="charging-time">
-            {chargingTime === Infinity ? "N/A" : chargingTime}
+            {chargingTime === Infinity ? 'N/A' : chargingTime}
           </div>
         </Tooltip>
-        <Tooltip placement="right" title={t("battery.dischargingTime")}>
+        <Tooltip placement="right" title={t('battery.dischargingTime')}>
           <div className="discharging-time">
-            {dischargingTime === Infinity ? "N/A" : dischargingTime}
+            {dischargingTime === Infinity ? 'N/A' : dischargingTime}
           </div>
         </Tooltip>
       </div>

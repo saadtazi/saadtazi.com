@@ -1,18 +1,18 @@
-import React from "react";
-import useSpeechRecognition from "hooks/use-speech-recognition";
-import RecordVoiceOverIcon from "@mui/icons-material/RecordVoiceOver";
-import { StyledRandomItem } from "./RandomStuff.styles";
-import Tooltip from "@mui/material/Tooltip";
-import useTranslate from "hooks/translate";
-import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
-import * as gtag from "gtag";
+import React from 'react';
+import useSpeechRecognition from 'hooks/use-speech-recognition';
+import RecordVoiceOverIcon from '@mui/icons-material/RecordVoiceOver';
+import { StyledRandomItem } from './RandomStuff.styles';
+import Tooltip from '@mui/material/Tooltip';
+import useTranslate from 'hooks/translate';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+import * as gtag from 'gtag';
 
 const SpeechRecognition: React.FC = () => {
   const t = useTranslate();
-  const [value, setValue] = React.useState("");
+  const [value, setValue] = React.useState('');
   const [ended, setEnded] = React.useState(false);
-  const onResult = (result: string[]) => setValue(result.join(""));
+  const onResult = (result: string[]) => setValue(result.join(''));
   const onEnd = () => setEnded(true);
   const { listen, listening, stop, supported } = useSpeechRecognition({
     onEnd,
@@ -25,17 +25,17 @@ const SpeechRecognition: React.FC = () => {
 
   const onListen = () => {
     gtag.event({
-      action: "activate",
-      category: "SpeechRecognition",
-      label: "activate speech recognition",
+      action: 'activate',
+      category: 'SpeechRecognition',
+      label: 'activate speech recognition',
     });
-    listen({ lang: "en-US", continuous: true });
+    listen({ lang: 'en-US', continuous: true });
   };
 
   return (
     <StyledRandomItem>
       <div className="icon">
-        <Tooltip placement="right" title={t("speechRecognition.title")}>
+        <Tooltip placement="right" title={t('speechRecognition.title')}>
           <RecordVoiceOverIcon />
         </Tooltip>
       </div>
@@ -46,12 +46,12 @@ const SpeechRecognition: React.FC = () => {
             onMouseDown={onListen}
             onMouseUp={stop}
           >
-            {t("speechRecognition.activate")}
+            {t('speechRecognition.activate')}
           </Button>
         </div>
         <div>
           <TextField
-            label={t("speechRecognition.output")}
+            label={t('speechRecognition.output')}
             multiline
             maxRows={4}
             value={value}
@@ -59,7 +59,11 @@ const SpeechRecognition: React.FC = () => {
             variant="filled"
           />
         </div>
-        {listening ? <div>Go ahead I'm listening...</div> : <div>&nbsp;</div>}
+        {listening ? (
+          <div>Go ahead I&apos;m listening...</div>
+        ) : (
+          <div>&nbsp;</div>
+        )}
       </div>
     </StyledRandomItem>
   );

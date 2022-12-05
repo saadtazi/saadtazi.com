@@ -1,7 +1,7 @@
 // @ts-nocheck
 // from https://github.com/craig1123/react-recipes/blob/master/src/useSpeechRecognition.js
 // not installable with react 18
-import { useRef, useEffect, useState, useCallback } from "react";
+import { useRef, useEffect, useState, useCallback } from 'react';
 
 // speech recognition
 type UseSpeechRecognitionReturnType = {
@@ -20,7 +20,7 @@ type useSpeechRecognition = (p: {
 }) => UseSpeechRecognitionReturnType;
 
 const isClient = !!(
-  typeof window !== "undefined" &&
+  typeof window !== 'undefined' &&
   window.document &&
   window.document.createElement
 );
@@ -30,11 +30,12 @@ const isClient = !!(
 // https://reactjs.org/docs/hooks-faq.html#how-to-read-an-often-changing-value-from-usecallback
 const useEventCallback = (fn, dependencies) => {
   const ref = useRef(() => {
-    throw new Error("Cannot call an event handler while rendering.");
+    throw new Error('Cannot call an event handler while rendering.');
   });
 
   useEffect(() => {
     ref.current = fn;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [fn, ...dependencies]);
 
   return useCallback(
@@ -57,7 +58,7 @@ const noop = () => {};
 
 type useSpeechRecognitionParams = {
   onEnd?: () => void;
-  onResult?: () => void;
+  onResult?: (result: string[]) => void;
   onError?: () => void;
 };
 
@@ -77,7 +78,7 @@ const useSpeechRecognition = (props: useSpeechRecognitionParams = {}) => {
   };
 
   const handleError = (event) => {
-    if (event.error === "not-allowed") {
+    if (event.error === 'not-allowed') {
       recognitionRef.current.onend = () => {};
       setListening(false);
     }
@@ -88,7 +89,7 @@ const useSpeechRecognition = (props: useSpeechRecognitionParams = {}) => {
     (args = {}) => {
       if (listening || !supported) return;
       const {
-        lang = "",
+        lang = '',
         interimResults = true,
         continuous = false,
         maxAlternatives = 1,
@@ -126,7 +127,7 @@ const useSpeechRecognition = (props: useSpeechRecognitionParams = {}) => {
     if (!supported) return;
 
     recognitionRef.current = new window.SpeechRecognition();
-  }, []);
+  }, [supported]);
 
   return {
     listen,

@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from 'react';
 
 // speech synthesis
 export type UseSpeechSynthesisReturnType = {
@@ -40,11 +40,11 @@ export const useSpeechSynthesis = (props: UseSpeechSynthesisParam) => {
   const [speaking, setSpeaking] = useState(false);
   const supported = !!window.speechSynthesis;
 
-  const processVoices = (voiceOptions) => {
+  const processVoices = useCallback((voiceOptions) => {
     setVoices(voiceOptions);
-  };
+  }, []);
 
-  const getVoices = () => {
+  const getVoices = useCallback(() => {
     // Firefox seems to have voices upfront and never calls the
     // voiceschanged event
     let voiceOptions = window.speechSynthesis.getVoices();
@@ -57,7 +57,7 @@ export const useSpeechSynthesis = (props: UseSpeechSynthesisParam) => {
       voiceOptions = event.target.getVoices();
       processVoices(voiceOptions);
     };
-  };
+  }, [processVoices]);
 
   const handleEnd = () => {
     setSpeaking(false);
@@ -72,11 +72,11 @@ export const useSpeechSynthesis = (props: UseSpeechSynthesisParam) => {
   const speak = (args = {}) => {
     const {
       voice = null,
-      text = "",
+      text = '',
       rate = 1,
       pitch = 1,
       volume = 1,
-      lang = "en-US",
+      lang = 'en-US',
       continuous = false,
     } = args;
     if (!supported) return;
@@ -131,7 +131,7 @@ export const useSpeechSynthesis = (props: UseSpeechSynthesisParam) => {
         window.speechSynthesis.cancel();
       }
     };
-  }, []);
+  }, [supported, getVoices]);
 
   return {
     supported,

@@ -40,7 +40,7 @@ export const en: LocaleData = {
       'https://donnees.montreal.ca/ville-de-montreal/murales',
   },
   minesweeper: {
-    navItem: 'minesweeper',
+    navItem: 'mine sweeper',
     restart: 'Restart',
     'Identified/Total': 'Identified/Total',
     time: 'Time',

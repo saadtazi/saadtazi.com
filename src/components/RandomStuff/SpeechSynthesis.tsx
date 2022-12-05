@@ -1,22 +1,22 @@
-import FormControl from "@mui/material/FormControl";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import Select from "@mui/material/Select";
-import TextField from "@mui/material/TextField";
-import React from "react";
+import FormControl from '@mui/material/FormControl';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import Select from '@mui/material/Select';
+import TextField from '@mui/material/TextField';
+import React from 'react';
 import {
   useSpeechSynthesis,
   UseSpeechSynthesisReturnType,
-} from "hooks/use-speech-synthesis";
-import MicIcon from "@mui/icons-material/Mic";
-import PlayArrowIcon from "@mui/icons-material/PlayArrow";
-import PauseIcon from "@mui/icons-material/Pause";
-import SkipPreviousIcon from "@mui/icons-material/SkipPrevious";
-import IconButton from "@mui/material/IconButton";
-import { StyledRandomItem } from "./RandomStuff.styles";
-import Tooltip from "@mui/material/Tooltip";
-import useTranslate from "hooks/translate";
-import * as gtag from "gtag";
+} from 'hooks/use-speech-synthesis';
+import MicIcon from '@mui/icons-material/Mic';
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+import PauseIcon from '@mui/icons-material/Pause';
+import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
+import IconButton from '@mui/material/IconButton';
+import { StyledRandomItem } from './RandomStuff.styles';
+import Tooltip from '@mui/material/Tooltip';
+import useTranslate from 'hooks/translate';
+import * as gtag from 'gtag';
 
 function getVoiceLabel(voice: SpeechSynthesisVoice) {
   const label = `${voice.name} - ${voice.lang}`;
@@ -25,7 +25,7 @@ function getVoiceLabel(voice: SpeechSynthesisVoice) {
 
 const SpeechSynthesis: React.FC = () => {
   const t = useTranslate();
-  const [value, setValue] = React.useState("");
+  const [value, setValue] = React.useState('');
   const [, setEnded] = React.useState(false);
   const [voice, setVoice] = React.useState<SpeechSynthesisVoice>();
 
@@ -61,9 +61,9 @@ const SpeechSynthesis: React.FC = () => {
 
   const onPlayClick = () => {
     gtag.event({
-      action: "click",
-      category: "speechSynthesis",
-      label: "activate speech synthesis",
+      action: 'click',
+      category: 'speechSynthesis',
+      label: 'activate speech synthesis',
     });
     speak({ text: value, voice: voice || voices[0] });
   };
@@ -75,7 +75,7 @@ const SpeechSynthesis: React.FC = () => {
   return (
     <StyledRandomItem>
       <div className="icon">
-        <Tooltip placement="right" title={t("speechSynthesis.title")}>
+        <Tooltip placement="right" title={t('speechSynthesis.title')}>
           <MicIcon />
         </Tooltip>
       </div>
@@ -89,9 +89,9 @@ const SpeechSynthesis: React.FC = () => {
                 style={{ minWidth: 120 }}
                 labelId="voice-label"
                 id="voice-select"
-                value={(voice && getVoiceLabel(voice)) || ""}
+                value={(voice && getVoiceLabel(voice)) || ''}
                 onChange={(e) =>
-                  setVoice(voicesMapping[e.target.value as number])
+                  setVoice(voicesMapping[e.target.value as unknown as number])
                 }
               >
                 {sortedVoices.map(
@@ -108,7 +108,7 @@ const SpeechSynthesis: React.FC = () => {
           </div>
           <div>
             <TextField
-              label={t("speechSynthesis.textPlaceholder")}
+              label={t('speechSynthesis.textPlaceholder')}
               multiline
               maxRows={4}
               value={value}

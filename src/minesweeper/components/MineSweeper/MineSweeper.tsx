@@ -242,10 +242,10 @@ export function MineSweeper() {
         <Lose restart={() => restart(settings)} />
       )}
       <MuiGrid container spacing={2}>
-        <MuiGrid xs={2}>
+        <MuiGrid>
           <SettingsDialog settings={settings} onSubmit={onSettingsChange} />
         </MuiGrid>
-        <MuiGrid xs={2}>
+        <MuiGrid>
           <Button onClick={() => restart(settings)}>
             {t('minesweeper.restart')}
           </Button>

@@ -1,26 +1,31 @@
-import React from "react";
-import { StyledMuraleInfo, StyledMuraleInfoCard } from "./MuraleInfo.styles";
-import { Murale } from "types/models";
-import Card from "@mui/material/Card";
-import CardActionArea from "@mui/material/CardActionArea";
-import CardContent from "@mui/material/CardContent";
-import Typography from "@mui/material/Typography";
-import CardActions from "@mui/material/CardActions";
-import Button from "@mui/material/Button";
-import useTranslate from "hooks/translate";
+import React from 'react';
+import { StyledMuraleInfo, StyledMuraleInfoCard } from './MuraleInfo.styles';
+import { Murale } from 'types/models';
+import Card from '@mui/material/Card';
+import CardActionArea from '@mui/material/CardActionArea';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
+import CardActions from '@mui/material/CardActions';
+import Button from '@mui/material/Button';
+import useTranslate from 'hooks/translate';
 
 type Props = {
   murale: Murale;
 };
 
-export const MuraleInfo: React.FC<Props> = (props) => {
-  const { image, artist, address, borough, year } = props.murale;
+const getAlt = ({ address, borough, artist, year }: Murale) => {
+  return [address, borough, artist, year].filter((v) => v).join(' - ');
+};
+
+export const MuraleInfo: React.FC<Props> = ({ murale }) => {
+  const { image, artist, address, borough, year } = murale;
 
   return (
     <StyledMuraleInfo>
       {image && (
         <div className="image">
-          <img src={image} alt={image} />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={image} alt={getAlt(murale)} />
         </div>
       )}
       {artist && <div className="artist">{artist}</div>}
@@ -49,12 +54,13 @@ export const MuraleInfoCard: React.FC<MuraleInfoCard> = ({
           <CardContent>
             {image && (
               <div className="image">
-                <img src={image} />
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={image} alt={getAlt(murale)} />
               </div>
             )}
             {artist && (
               <Typography variant="body2" component="p">
-                {t("murales.by", undefined, { artist })}
+                {t('murales.by', undefined, { artist })}
               </Typography>
             )}
             {address && (
