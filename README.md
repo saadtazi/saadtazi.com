@@ -3,13 +3,13 @@
 ```
 cp .env.example.local .env.local
 vi .env.local # edit
-yarn
+npm i
 ```
 
 ## run - dev
 
 ```
-yarn dev
+npm run dev
 ```
 
 ---
