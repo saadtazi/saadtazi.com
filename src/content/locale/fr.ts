@@ -49,8 +49,9 @@ export const fr: LocaleData = {
     nbCols: 'Nombre de colonnes',
     nbMines: 'Nombre de mines',
     saveAndRestart: 'Sauvegarder et recommencer',
-    flagbackToNormal: 'Cliquer pour revenir au mode normal',
-    clickToAddFlag: 'Cliquer pour ajouter des drapeaux lorsque vous cliquer',
+    flagbackToNormal: 'Cliquer pour revenir au mode normal ("f" to basculer)',
+    clickToAddFlag:
+      'Cliquer pour ajouter des drapeaux lorsque vous cliquer ("f" to basculer)',
   },
   cancel: 'Annuler',
   errors: {

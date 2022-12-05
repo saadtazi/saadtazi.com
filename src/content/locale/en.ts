@@ -49,8 +49,9 @@ export const en: LocaleData = {
     nbCols: 'Number of Columns',
     nbMines: 'Number of mines',
     saveAndRestart: 'Save and Restart',
-    flagbackToNormal: 'click to switch back to normal',
-    clickToAddFlag: 'click to add flag when clicking/tapping a cell',
+    flagbackToNormal: 'click to switch back to normal (press "f" to toggle)',
+    clickToAddFlag:
+      'click to add flag when clicking/tapping a cell (press "f" to toggle)',
   },
   cancel: 'cancel',
   errors: { message404: "NooOooOOooo... We're lost.", backTo: 'back to' },
