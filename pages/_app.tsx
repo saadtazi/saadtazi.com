@@ -1,66 +1,57 @@
-import React from 'react';
-import Head from 'next/head';
-import { useRouter } from 'next/router';
-import { IntlProvider } from 'react-intl';
-import { localesData, LocalesData, flattenMessages } from 'content/locale';
-import { ThemeProvider as MUIThemeProvider } from '@material-ui/core/styles';
-import { ThemeProvider as SCThemeProvider } from 'styled-components';
-import * as gtag from 'src/gtag';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import theme from 'src/theme';
+import * as React from "react";
+import Head from "next/head";
+import { AppProps } from "next/app";
+import { useRouter } from "next/router";
+import { IntlProvider } from "react-intl";
+import { localesData, LocalesData, flattenMessages } from "content/locale";
+import { ThemeProvider } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
+import { CacheProvider, EmotionCache } from "@emotion/react";
+import theme from "theme";
+import createEmotionCache from "createEmotionCache";
+import * as gtag from "gtag";
 
-type MyAppProp = {
-  Component: React.ElementType;
-  pageProps: any;
-};
-const MyApp: React.FC<MyAppProp> = (props) => {
-  const { Component, pageProps } = props;
+// Client-side cache, shared for the whole session of the user in the browser.
+const clientSideEmotionCache = createEmotionCache();
+
+interface MyAppProps extends AppProps {
+  emotionCache?: EmotionCache;
+}
+
+export default function MyApp(props: MyAppProps) {
+  const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
   const { locale, defaultLocale, events: routerEvents } = useRouter();
-  const currentLocale = (locale || defaultLocale || 'en') as keyof LocalesData;
+  const currentLocale = (locale || defaultLocale || "en") as keyof LocalesData;
   const messages = flattenMessages(localesData[currentLocale]);
-
-  React.useEffect(() => {
-    // Remove the server-side injected CSS.
-    const jssStyles = document.querySelector('#jss-server-side');
-    if (jssStyles) {
-      jssStyles.parentElement?.removeChild(jssStyles);
-    }
-  }, []);
 
   React.useEffect(() => {
     const handleRouteChange = (url: URL) => {
       gtag.pageview(url);
     };
-    routerEvents.on('routeChangeComplete', handleRouteChange);
+    routerEvents.on("routeChangeComplete", handleRouteChange);
     return () => {
-      routerEvents.off('routeChangeComplete', handleRouteChange);
+      routerEvents.off("routeChangeComplete", handleRouteChange);
     };
   }, [routerEvents]);
-
   return (
-    <React.Fragment>
+    <CacheProvider value={emotionCache}>
       <IntlProvider
         locale={currentLocale as string}
         defaultLocale={defaultLocale}
         messages={messages}
       >
-        <Head>
-          <title>Saad Tazi</title>
-          <meta
-            name="viewport"
-            content="minimum-scale=1, initial-scale=1, width=device-width"
-          />
-        </Head>
-        <MUIThemeProvider theme={theme}>
-          <SCThemeProvider theme={theme}>
-            {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-            <CssBaseline />
-            <Component {...pageProps} />
-          </SCThemeProvider>
-        </MUIThemeProvider>
+        <ThemeProvider theme={theme}>
+          <Head>
+            <meta
+              name="viewport"
+              content="initial-scale=1, width=device-width"
+            />
+          </Head>
+          {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+          <CssBaseline />
+          <Component {...pageProps} />
+        </ThemeProvider>
       </IntlProvider>
-    </React.Fragment>
+    </CacheProvider>
   );
-};
-
-export default MyApp;
+}
