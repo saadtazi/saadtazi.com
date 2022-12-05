@@ -9,10 +9,13 @@ export const StyledMenu = styled('div')`
 
   .title {
     flex-grow: 1;
-    [theme.breakpoints.down('sm')]: {
-      font: 0.8em;
-    },
+    ${theme.breakpoints.down('sm')} {
+      font-size: 0.7em;
+      padding-left: 1em;
+    };
+
   }
+
 
   .language-selector {
     padding-left: 20px;

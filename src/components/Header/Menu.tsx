@@ -16,18 +16,22 @@ const MyMenu: React.FC = () => {
     <Toolbar>
       <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
         <StyledMenu>
-          <div className="title">
-            <Link href="/">{t('home')}</Link> -
+          <div className="title links">
+            <Link href="/">{t('home')}</Link>
           </div>
+          -
           <div className="links">
-            <Link href="/murales">{t('murales.navItem')}</Link> -
+            <Link href="/murales">{t('murales.navItem')}</Link>
           </div>
+          -
           <div className="links">
-            <Link href="/stuff">{t('stuff')}</Link> -
+            <Link href="/stuff">{t('stuff')}</Link>
           </div>
+          -
           <div className="links">
-            <Link href="/minesweeper">{t('minesweeper.navItem')}</Link> -
+            <Link href="/minesweeper">{t('minesweeper.navItem')}</Link>
           </div>
+          -
           <div className="language-selector">
             <LanguageSelector />
           </div>
