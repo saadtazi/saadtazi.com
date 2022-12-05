@@ -14,6 +14,18 @@ const projects: Project[] = [
     ],
   },
   {
+    name: 'murals',
+    lead: 'Montreal city murals',
+    features: ['A way to discover...'],
+    tags: ['nextjs', 'webapp', 'mtl'],
+    links: [
+      {
+        name: 'site',
+        url: 'murales',
+      },
+    ],
+  },
+  {
     name: 'capitales',
     lead: 'Learn country capitals',
     features: ['what score can you get? Play the quizz!!'],
