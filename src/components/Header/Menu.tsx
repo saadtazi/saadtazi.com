@@ -2,16 +2,19 @@ import React from 'react';
 import Toolbar from '@mui/material/Toolbar';
 import MenuIcon from '@mui/icons-material/Menu';
 import Link from 'next/link';
-import LanguageSelector from 'components/LanguageSelector/LanguageSelector';
 import useTranslate from 'hooks/translate';
 import { StyledMenu, StyledSmallMenu } from './Menu.styles';
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
+import { useRouter } from 'next/router';
 
 const MyMenu: React.FC = () => {
   const t = useTranslate();
+  const { locale, locales, pathname } = useRouter();
+  const displayedLocales = (locales || []).filter((l) => l !== locale);
+
   return (
     <Toolbar>
       <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
@@ -32,9 +35,15 @@ const MyMenu: React.FC = () => {
             <Link href="/minesweeper">{t('minesweeper.navItem')}</Link>
           </div>
           -
-          <div className="language-selector">
-            <LanguageSelector />
-          </div>
+          {displayedLocales.map((l) => {
+            return (
+              <div key={l} className="language-selector">
+                <Link key={l} href={pathname} locale={l}>
+                  {l}
+                </Link>
+              </div>
+            );
+          })}
         </StyledMenu>
       </Box>
       <Box sx={{ display: { xs: 'display', sm: 'none' } }}>
@@ -47,8 +56,10 @@ const MyMenu: React.FC = () => {
 const SmallMenu = () => {
   const [anchorEl, setAnchorEl] = React.useState<Element | null>(null);
   const t = useTranslate();
+  const { locale, locales, pathname } = useRouter();
+  const displayedLocales = (locales || []).filter((l) => l !== locale);
 
-  const handleClose = (e: React.MouseEvent) => setAnchorEl(null);
+  const handleClose = () => setAnchorEl(null);
   return (
     <>
       <IconButton
@@ -69,21 +80,31 @@ const SmallMenu = () => {
         anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
       >
         <StyledSmallMenu>
-          <MenuItem onClick={handleClose} href="/">
-            <Link href="/">{t('home')}</Link>
+          <MenuItem onClick={handleClose} component={Link} href="/">
+            {t('home')}
           </MenuItem>
-          <MenuItem onClick={handleClose} href="/">
-            <Link href="/murales">{t('murales.navItem')}</Link>
+          <MenuItem onClick={handleClose} component={Link} href="/murales">
+            {t('murales.navItem')}
           </MenuItem>
-          <MenuItem onClick={handleClose} href="/">
-            <Link href="/stuff">{t('stuff')}</Link>
+          <MenuItem onClick={handleClose} component={Link} href="/stuff">
+            {t('stuff')}
           </MenuItem>
-          <MenuItem onClick={handleClose} href="/">
-            <Link href="/minesweeper">{t('minesweeper.navItem')}</Link>
+          <MenuItem onClick={handleClose} component={Link} href="/minesweeper">
+            {t('minesweeper.navItem')}
           </MenuItem>
-          <MenuItem onClick={handleClose} href="/">
-            <LanguageSelector />
-          </MenuItem>
+          {displayedLocales.map((l) => {
+            return (
+              <MenuItem
+                key={l}
+                onClick={handleClose}
+                component={Link}
+                href={pathname}
+                locale={l}
+              >
+                {l}
+              </MenuItem>
+            );
+          })}
         </StyledSmallMenu>
       </Menu>
     </>

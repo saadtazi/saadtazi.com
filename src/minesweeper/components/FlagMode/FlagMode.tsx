@@ -3,11 +3,19 @@ import useTranslate from 'hooks/translate';
 import HelpIcon from '@mui/icons-material/HelpOutline';
 import { Tooltip } from '@mui/material';
 
-const Flag = styled.span`
+const FlagButton = styled.div`
   cursor: pointer;
-  background-color: ${(props: { flagMode: boolean }) => {
-    return props.flagMode ? 'grey' : 'lightGrey';
-  }};
+  display: inline-block;
+  padding: 0.6em 1em;
+  border-radius: 0.2em;
+  box-shadow: 0.2em 0.3em 0.5em rgba(0, 0, 0, 0.35);
+  border: 0.1em solid grey;
+  ${(props: { flagMode: boolean }) =>
+    props.flagMode
+      ? `background-color: grey;
+    border: 0.1em solid grey;`
+      : `background-color: lightGrey;
+    border: 0.1em solid grey;`}
 `;
 
 type FlagModeProps = {
@@ -22,11 +30,11 @@ export function FlagMode({ flagMode, toggle }: FlagModeProps) {
     : t('minesweeper.clickToAddFlag');
   return (
     <div>
-      <Flag flagMode={flagMode} onClick={toggle} title={title}>
+      <FlagButton flagMode={flagMode} onClick={toggle} title={title}>
         ⛳️
-      </Flag>
+      </FlagButton>
       <Tooltip title={title}>
-        <HelpIcon style={{ verticalAlign: 'bottom' }} />
+        <HelpIcon style={{ verticalAlign: 'middle', color: 'grey' }} />
       </Tooltip>
     </div>
   );

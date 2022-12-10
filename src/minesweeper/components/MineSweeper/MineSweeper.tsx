@@ -252,12 +252,15 @@ export function MineSweeper() {
         </MuiGrid>
       </MuiGrid>
       <MuiGrid container spacing={2}>
-        <MuiGrid xs={4}>
+        <MuiGrid xs={12} sm={2}>
+          <FlagMode toggle={toggleFlagMode} flagMode={flagMode} />
+        </MuiGrid>
+        <MuiGrid xs={6} sm={5}>
           <h3>
             {t('minesweeper.Identified/Total')}: {nbFlagged}/{grid.nbMines}
           </h3>
         </MuiGrid>
-        <MuiGrid xs={4} xsOffset="auto">
+        <MuiGrid xs={6} sm={5} xsOffset="auto">
           <Timer
             action={
               gameStatus === GameStatus.STARTED
@@ -269,7 +272,6 @@ export function MineSweeper() {
           />
         </MuiGrid>
       </MuiGrid>
-      <FlagMode toggle={toggleFlagMode} flagMode={flagMode} />
 
       {router.query.cheat && (
         <Button onClick={revealAll}>Reveal all (😈)</Button>

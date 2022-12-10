@@ -52,6 +52,9 @@ export const fr: LocaleData = {
     flagbackToNormal: 'Cliquer pour revenir au mode normal ("f" to basculer)',
     clickToAddFlag:
       'Cliquer pour ajouter des drapeaux lorsque vous cliquer ("f" to basculer)',
+    youWon: 'Gagné 🥳!',
+    youLost: 'Perdu 😞...',
+    close: 'Fermer',
   },
   cancel: 'Annuler',
   errors: {

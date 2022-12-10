@@ -73,7 +73,9 @@ export function SettingsDialog({
               <TextField
                 label={t('minesweeper.nbCols')}
                 onChange={(evt) =>
-                  setNbColumnsValue(parseInt(evt.currentTarget.value, 10))
+                  setNbColumnsValue(
+                    parseInt(evt.currentTarget.value || '1', 10)
+                  )
                 }
                 inputProps={{ type: 'number', min: 1 }}
                 value={nbColumnsValue}
@@ -83,7 +85,7 @@ export function SettingsDialog({
               <TextField
                 label={t('minesweeper.nbRows')}
                 onChange={(evt) =>
-                  setNbRowsValue(parseInt(evt.currentTarget.value, 10))
+                  setNbRowsValue(parseInt(evt.currentTarget.value || '1', 10))
                 }
                 inputProps={{ type: 'number', min: 1 }}
                 value={nbRowsValue}
@@ -93,7 +95,7 @@ export function SettingsDialog({
               <TextField
                 label={t('minesweeper.nbMines')}
                 onChange={(evt) =>
-                  setNbMinesValue(parseInt(evt.currentTarget.value, 10))
+                  setNbMinesValue(parseInt(evt.currentTarget.value || '1', 10))
                 }
                 inputProps={{
                   type: 'number',

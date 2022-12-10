@@ -52,6 +52,9 @@ export const en: LocaleData = {
     flagbackToNormal: 'click to switch back to normal (press "f" to toggle)',
     clickToAddFlag:
       'click to add flag when clicking/tapping a cell (press "f" to toggle)',
+    youWon: 'You won 🥳!',
+    youLost: 'You lost 😞...',
+    close: 'Close',
   },
   cancel: 'cancel',
   errors: { message404: "NooOooOOooo... We're lost.", backTo: 'back to' },
