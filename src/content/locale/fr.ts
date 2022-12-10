@@ -59,6 +59,7 @@ export const fr: LocaleData = {
   cancel: 'Annuler',
   errors: {
     message404: 'NooOooOOooon... Nous sommes perdus.',
-    backTo: "retour à l'",
+    backTo: "retour à l'accueil",
   },
+  notFound: 'not found',
 };

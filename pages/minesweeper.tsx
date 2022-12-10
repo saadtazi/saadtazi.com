@@ -1,7 +1,6 @@
 import { MineSweeper } from 'minesweeper/components/MineSweeper';
 import Head from 'next/head';
 import Container from '@mui/material/Container';
-import styled from '@emotion/styled';
 import Header from 'components/Header/Header';
 import Typography from '@mui/material/Typography';
 import useTranslate from 'hooks/translate';
@@ -12,6 +11,9 @@ export default function MineSweeperPage() {
 
   return (
     <>
+      <Head>
+        <title>Saad Tazi - {t('minesweeper.navItem')}</title>
+      </Head>
       <Header disableMap={true}>
         <div className="hero-text">
           <Typography variant="h2" component="h2">
