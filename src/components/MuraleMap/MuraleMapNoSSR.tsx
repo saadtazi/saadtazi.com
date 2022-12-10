@@ -10,6 +10,7 @@ import { fromFeature, getCenter } from 'utils/murale';
 import { StyledMuraleMap } from './MuraleMap.styles';
 import { LatLngExpression } from 'leaflet';
 import { useWindowSize } from 'react-use';
+import Grid from '@mui/material/Unstable_Grid2/Grid2';
 
 const MtlCenter: LatLngExpression = [45.5017, -73.5673];
 
@@ -40,38 +41,47 @@ const MuraleMap: React.FC = () => {
 
   return (
     <StyledMuraleMap withMurale={!!murale} windowHeight={height}>
-      <MapContainer
-        className="map"
-        zoom={13}
-        scrollWheelZoom={false}
-        center={center}
-        trackResize
-      >
-        <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          subdomains="abc"
-          maxZoom={19}
-        />
-        <GeoJSON
-          /* @ts-ignore */
-          data={data}
-          pointToLayer={(geoJsonFeature, latlng) => {
-            const { image, ...popupInfo } = fromFeature(geoJsonFeature);
+      <Grid container spacing={2}>
+        <Grid xs={12} sm={murale ? 6 : 12}>
+          <MapContainer
+            className="map"
+            zoom={13}
+            scrollWheelZoom={false}
+            center={center}
+            trackResize
+          >
+            <TileLayer
+              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              subdomains="abc"
+              maxZoom={19}
+            />
+            <GeoJSON
+              /* @ts-ignore */
+              data={data}
+              pointToLayer={(geoJsonFeature, latlng) => {
+                const { image, ...popupInfo } = fromFeature(geoJsonFeature);
 
-            return getMarker(
-              getDefaultIcon(),
-              latlng,
-              <MuraleInfo murale={popupInfo} />,
-              onMarkerClick(geoJsonFeature)
-            );
-          }}
-        />
-        <CenterOnMarkerClick latlng={murale && getCenter(murale)} />
-      </MapContainer>
-      {murale && (
-        <MuraleInfoCard murale={murale} onClose={() => setMurale(undefined)} />
-      )}
+                return getMarker(
+                  getDefaultIcon(),
+                  latlng,
+                  <MuraleInfo murale={popupInfo} />,
+                  onMarkerClick(geoJsonFeature)
+                );
+              }}
+            />
+            <CenterOnMarkerClick latlng={murale && getCenter(murale)} />
+          </MapContainer>
+        </Grid>
+        {murale && (
+          <Grid xs={12} sm={6}>
+            <MuraleInfoCard
+              murale={murale}
+              onClose={() => setMurale(undefined)}
+            />
+          </Grid>
+        )}
+      </Grid>
     </StyledMuraleMap>
   );
 };
