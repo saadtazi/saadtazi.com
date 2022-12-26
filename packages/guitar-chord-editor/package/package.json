@@ -1,6 +1,6 @@
 {
-  "name": "guitar-chord",
-  "version": "0.0.1",
+  "name": "guitar-chord-editor",
+  "version": "0.0.2",
   "description": "react component to display and edit guitar and ukulele chords",
   "scripts": {
     "test": "jest",
