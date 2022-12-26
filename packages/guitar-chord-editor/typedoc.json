@@ -1,0 +1,7 @@
+{
+  "exclude": [
+    "./src/components/Chord/OpenString.tsx",
+    "./src/components/Chord/Point.tsx",
+    "./src/utils/array.ts"
+  ]
+}

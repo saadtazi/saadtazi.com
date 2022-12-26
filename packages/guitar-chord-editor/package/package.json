@@ -1,0 +1,25 @@
+{
+  "name": "guitar-chord",
+  "version": "0.0.1",
+  "description": "react component to display and edit guitar and ukulele chords",
+  "scripts": {
+    "test": "jest",
+    "build": "npm run doc && npm run dist",
+    "dist": "tsc",
+    "doc": "typedoc --plugin typedoc-plugin-markdown src"
+  },
+  "author": "Saad Tazi",
+  "license": "ISC",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "/dist"
+  ],
+  "devDependencies": {
+    "@testing-library/jest-dom": "5.16.5",
+    "@testing-library/react": "13.4.0",
+    "@testing-library/user-event": "14.4.3",
+    "typedoc": "0.23.23",
+    "typedoc-plugin-markdown": "3.14.0"
+  }
+}
