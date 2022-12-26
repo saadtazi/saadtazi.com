@@ -2,6 +2,22 @@ import { Project } from 'types/models';
 
 const projects: Project[] = [
   {
+    name: 'guitar-chord',
+    lead: 'a react component that displays guitar chords (editable and read-only)',
+    features: [],
+    tags: ['react', 'music', 'opensource'],
+    links: [
+      {
+        name: 'demo',
+        url: 'chord',
+      },
+      {
+        name: 'npm',
+        url: 'https://www.npmjs.com/package/guitar-chord-editor',
+      },
+    ],
+  },
+  {
     name: 'minesweeper',
     lead: 'A project made with my son',
     features: ['A classic...'],
