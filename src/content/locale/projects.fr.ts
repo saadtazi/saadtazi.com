@@ -3,7 +3,7 @@ import { Project } from 'types/models';
 const projects: Project[] = [
   {
     name: 'guitar-chord',
-    lead: "un composant react qui permet d'afficher un accord de guitar (editable and non-editable)",
+    lead: "un composant react qui permet d'afficher un accord de guitare/ukulele... (editable and non-editable)",
     features: [],
     tags: ['react', 'music', 'opensource'],
     links: [

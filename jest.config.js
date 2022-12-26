@@ -12,6 +12,7 @@ module.exports = {
     "!<rootDir>/*.config.js",
     "!<rootDir>/coverage/**",
   ],
+  setupFilesAfterEnv: ['<rootDir>/jest-setup.js'],
   moduleNameMapper: {
     // Handle CSS imports (with CSS modules)
     // https://jestjs.io/docs/webpack#mocking-css-modules
