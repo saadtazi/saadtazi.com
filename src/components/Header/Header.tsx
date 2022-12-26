@@ -1,11 +1,10 @@
-import React from "react";
-import GeolocatedMap from "components/Map/GeoLocatedMap";
-import Menu from "./Menu";
-import { StyledHeader } from "./Header.styles";
-import { StyledNoMap } from "../Map/Map.styles";
-import AppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
-import useTranslate from "hooks/translate";
+import React from 'react';
+import GeolocatedMap from 'components/Map/GeoLocatedMap';
+import Menu from './Menu';
+import { StyledHeader } from './Header.styles';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import useTranslate from 'hooks/translate';
 
 type Props = {
   disableMap?: boolean;
@@ -22,7 +21,7 @@ const Header: React.FC<Props> = ({ disableMap, children }) => {
         </Toolbar>
       </AppBar>
       {!disableMap && (
-        <div className="map-container" style={{ height: "100%" }}>
+        <div className="map-container" style={{ height: '100%' }}>
           <div className="map">
             <GeolocatedMap />
           </div>

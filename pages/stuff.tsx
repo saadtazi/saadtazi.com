@@ -13,7 +13,7 @@ export default function Index() {
   return (
     <>
       <Head>
-        <title>Saad Tazi - {t('minesweeper.navItem')}</title>
+        <title>Saad Tazi - {t('stuff')}</title>
       </Head>
       <Header>
         <div className="hero-text">
