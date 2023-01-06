@@ -103,7 +103,7 @@ export const Gauge = ({ frequency, noteFrequency, note }: GaugeProps) => {
                     className="text-sm fill-gray-400"
                     {...gauge.getLabelProps({ angle, offset: 30 })}
                   >
-                    {asValue}Hz
+                    {asValue} Hz
                   </text>
                 )}
               </Fragment>

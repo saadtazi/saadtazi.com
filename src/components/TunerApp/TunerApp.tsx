@@ -1,4 +1,11 @@
-import { useCallback, useEffect, useState, useRef, useMemo } from 'react';
+import {
+  useCallback,
+  useEffect,
+  useState,
+  useRef,
+  useMemo,
+  Fragment,
+} from 'react';
 import * as Tone from 'tone';
 import Button from '@mui/material/Button';
 import Grid from '@mui/system/Unstable_Grid';
@@ -13,8 +20,23 @@ import { PitchDetector } from 'pitchy';
 import { Gauge } from './Gauge';
 import Slider from '@mui/material/Slider';
 import useTranslate from 'hooks/translate';
+import Stack from '@mui/material/Stack';
 
 const ANALYSER_SIZE = 2048;
+
+const getColor = (
+  frequency: number,
+  noteFrequency: number
+): 'success' | 'secondary' | 'default' => {
+  const isClose =
+    frequency &&
+    frequency > noteFrequency - 20 &&
+    frequency < noteFrequency + 20;
+  const doesMatch =
+    frequency && frequency > noteFrequency - 1 && frequency < noteFrequency + 1;
+  const color = doesMatch ? 'success' : isClose ? 'secondary' : 'default';
+  return color;
+};
 
 export const TunerApp = () => {
   const t = useTranslate();
@@ -94,7 +116,7 @@ export const TunerApp = () => {
       return [];
     }
     return notes.map((note) => Tone.Frequency(note).toFrequency());
-  }, [tuningPos]);
+  }, [notes]);
 
   const handleTuningPosChange = useCallback(
     (event: SelectChangeEvent) => {
@@ -103,12 +125,12 @@ export const TunerApp = () => {
       }
       setCloseNote(notes[notes.length - 1]);
     },
-    [setTuningPos]
+    [setTuningPos, notes]
   );
 
   return (
-    <Grid container spacing={2} justifyContent="center">
-      <Grid xs={12}>
+    <Grid container spacing={2}>
+      <Grid xs={12} justifyContent="center" display="flex">
         <FormControl fullWidth>
           <InputLabel id="tuning-selector">{t('tuner.tuning')}</InputLabel>
           <Select
@@ -125,7 +147,7 @@ export const TunerApp = () => {
           </Select>
         </FormControl>
       </Grid>
-      <Grid xs={12}>
+      <Grid xs={12} justifyContent="center" display="flex">
         <Typography>{t('tuner.frequencyClarity')}</Typography>
         <Slider
           getAriaLabel={() => 'Chord size (%)'}
@@ -137,66 +159,75 @@ export const TunerApp = () => {
           valueLabelDisplay="auto"
           getAriaValueText={() => `${clarity * 100}%`}
         />
+      </Grid>
+      <Grid xs justifyContent="center" display="flex">
         <Button onClick={toggleStart}>
           {started ? t('tuner.stop') : t('tuner.start')}
         </Button>
       </Grid>
-      <Grid xs={12}>
-        <Grid container justifyContent="center">
+      <Grid xs={12} justifyContent="center" display="flex">
+        <Stack direction="row" spacing={2}>
           {tuningPos !== '' &&
             started &&
             notes?.map((note, index) => {
               const noteFrequency = frequencies[index];
               const noteFrequencyStr = noteFrequency?.toFixed(2);
-              const isClose =
-                frequency &&
-                frequency > noteFrequency - 20 &&
-                frequency < noteFrequency + 20;
-              const doesMatch =
-                frequency &&
-                frequency > noteFrequency - 1 &&
-                frequency < noteFrequency + 1;
-              const color = doesMatch
-                ? 'success'
-                : isClose
-                ? 'secondary'
-                : 'default';
+
+              const color = getColor(frequency || 0, noteFrequency);
+
               return (
-                <Grid key={note}>
-                  <IconButton
-                    color={color}
-                    aria-label="play"
-                    onClick={() => play(note)}
-                    style={{
-                      color: color === 'secondary' ? '#4ade80' : 'inherit',
-                    }}
+                <Grid container key={note}>
+                  <Grid
+                    xs={12}
+                    justifyContent="center"
+                    display="flex"
+                    key={note}
                   >
-                    {note}
-                  </IconButton>
-                  <div style={{ fontSize: '0.7em' }}>{noteFrequencyStr}</div>
+                    <IconButton
+                      color={color}
+                      aria-label="play"
+                      onClick={() => play(note)}
+                      style={{
+                        color: color === 'success' ? '#4ade80' : undefined,
+                      }}
+                    >
+                      {note}
+                    </IconButton>
+                  </Grid>
+                  <Grid
+                    xs={12}
+                    justifyContent="center"
+                    display="flex"
+                    key={note}
+                  >
+                    <div style={{ fontSize: '0.7em' }}>
+                      {noteFrequencyStr} Hz
+                    </div>
+                  </Grid>
                 </Grid>
               );
             })}
-        </Grid>
+        </Stack>
       </Grid>
       {started && closeNote && (
-        <Grid xs={12}>
-          <Grid container justifyContent="center">
+        <>
+          <Grid xs={12} justifyContent="center" display="flex">
             <Gauge
               frequency={frequency}
               note={closeNote}
               noteFrequency={Tone.Frequency(closeNote).toFrequency()}
             />
           </Grid>
-        </Grid>
+          <Grid xs={12} justifyContent="center" display="flex">
+            <Typography variant="h3">{closeNote}</Typography>
+          </Grid>
+        </>
       )}
       {started && frequency && (
-        <Grid xs={12}>
-          <Grid container justifyContent="center">
-            <Typography>
-              {t('tuner.detectedFrequency')}: {frequency?.toFixed(2)} Hz
-            </Typography>
-          </Grid>
+        <Grid xs={12} justifyContent="center" display="flex">
+          <Typography>
+            {t('tuner.detectedFrequency')}: {frequency?.toFixed(2)} Hz
+          </Typography>
         </Grid>
       )}
     </Grid>
