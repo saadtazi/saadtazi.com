@@ -56,6 +56,14 @@ export const fr: LocaleData = {
     youLost: 'Perdu 😞...',
     close: 'Fermer',
   },
+  tuner: {
+    title: 'Accordeur de Guitare/Ukelele',
+    tuning: 'Accordage',
+    frequencyClarity: 'Clarté/Sensibilité de la detection de fréquence',
+    detectedFrequency: 'Fréquence Detectée',
+    start: 'démarrer',
+    stop: 'arrêter',
+  },
   cancel: 'Annuler',
   errors: {
     message404: 'NooOooOOooon... Nous sommes perdus.',

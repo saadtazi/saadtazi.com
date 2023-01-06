@@ -2,6 +2,18 @@ import { Project } from 'types/models';
 
 const projects: Project[] = [
   {
+    name: 'instrument tuner',
+    lead: 'a chord tuner for multiple instruments',
+    features: [],
+    tags: ['react', 'music'],
+    links: [
+      {
+        name: 'site',
+        url: 'tuner',
+      },
+    ],
+  },
+  {
     name: 'guitar-chord',
     lead: 'a react component that displays guitar chords (editable and read-only)',
     features: [],

@@ -43,7 +43,6 @@ export const ChordPlayer = ({
     (async () => {
       synth.current = await loadSampler();
     })();
-    // synth.current = new Tone.PolySynth().toDestination();
   }, []);
 
   const play = useCallback(() => {
@@ -53,7 +52,7 @@ export const ChordPlayer = ({
       )
       .filter((v) => v !== undefined) as NoteWithLevel[];
 
-    synth.current?.triggerAttackRelease(notes, 0.5);
+    synth.current?.triggerAttackRelease(notes, 2);
   }, [selected, openChords]);
 
   useEffect(() => {

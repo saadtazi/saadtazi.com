@@ -2,6 +2,18 @@ import { Project } from 'types/models';
 
 const projects: Project[] = [
   {
+    name: "accordeur d'instrument",
+    lead: 'un accordeur pour plusieurs instruments',
+    features: [],
+    tags: ['react', 'music'],
+    links: [
+      {
+        name: 'site',
+        url: 'tuner',
+      },
+    ],
+  },
+  {
     name: 'guitar-chord',
     lead: "un composant react qui permet d'afficher un accord de guitare/ukulele... (editable and non-editable)",
     features: [],
