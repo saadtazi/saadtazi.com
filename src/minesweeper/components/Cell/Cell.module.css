@@ -1,6 +1,7 @@
 .cell {
   cursor: pointer;
   aspect-ratio: 1;
+  user-select: none;
 }
 
 .notRevealed {
