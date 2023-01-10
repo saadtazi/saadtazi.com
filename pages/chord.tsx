@@ -5,6 +5,7 @@ import Header from 'components/Header/Header';
 import Typography from '@mui/material/Typography';
 import useTranslate from 'hooks/translate';
 import PersonalLinks from 'components/PersonalLinks/PersonalLinks';
+import { HeadTitle } from 'components/HeadTitle';
 
 export default function ChordPage() {
   const t = useTranslate();
@@ -12,7 +13,7 @@ export default function ChordPage() {
   return (
     <>
       <Head>
-        <title>Saad Tazi - Chord Player</title>
+        <HeadTitle title="Chord Player" />
       </Head>
       <Header disableMap={true}>
         <div className="hero-text">

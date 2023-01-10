@@ -260,7 +260,7 @@ export function MineSweeper() {
             {t('minesweeper.Identified/Total')}: {nbFlagged}/{grid.nbMines}
           </h3>
         </MuiGrid>
-        <MuiGrid xs={6} sm={5} xsOffset="auto">
+        <MuiGrid xs={12} sm={5} xsOffset="auto">
           <Timer
             action={
               gameStatus === GameStatus.STARTED

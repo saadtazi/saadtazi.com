@@ -8,13 +8,14 @@ import Head from 'next/head';
 
 import useTranslate from 'hooks/translate';
 import { FormattedMessage } from 'react-intl';
+import { HeadTitle } from 'components/HeadTitle';
 
 export default function Index() {
   const t = useTranslate();
   return (
     <>
       <Head>
-        <title>Saad Tazi - {t('murales.navItem')}</title>
+        <HeadTitle title={t('murales.navItem')} />
       </Head>
       <Header disableMap={true}>
         <div className="hero-text">

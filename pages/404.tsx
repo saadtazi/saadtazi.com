@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { HeadTitle } from 'components/HeadTitle';
 import useTranslate from 'hooks/translate';
 import Link from 'Link';
 import Head from 'next/head';
@@ -15,7 +16,7 @@ export default function Custom404() {
   return (
     <Styled404>
       <Head>
-        <title>Saad - {t('notFound')}</title>
+        <HeadTitle title={t('notFound')} />
       </Head>
       <h1>{t('errors.message404')}</h1>
       <p>

@@ -26,7 +26,7 @@
 
 #### Defined in
 
-[utils/notes.ts:1](https://github.com/saadtazi/saadtazi.com/blob/ac8072d/packages/guitar-chord-editor/src/utils/notes.ts#L1)
+[utils/notes.ts:1](https://github.com/saadtazi/saadtazi.com/blob/2d1d141/packages/guitar-chord-editor/src/utils/notes.ts#L1)
 
 ___
 
@@ -36,7 +36,7 @@ ___
 
 #### Defined in
 
-[utils/notes.ts:2](https://github.com/saadtazi/saadtazi.com/blob/ac8072d/packages/guitar-chord-editor/src/utils/notes.ts#L2)
+[utils/notes.ts:2](https://github.com/saadtazi/saadtazi.com/blob/2d1d141/packages/guitar-chord-editor/src/utils/notes.ts#L2)
 
 ___
 
@@ -66,7 +66,7 @@ ___
 
 #### Defined in
 
-[components/Chord/Chord.tsx:8](https://github.com/saadtazi/saadtazi.com/blob/ac8072d/packages/guitar-chord-editor/src/components/Chord/Chord.tsx#L8)
+[components/Chord/Chord.tsx:8](https://github.com/saadtazi/saadtazi.com/blob/2d1d141/packages/guitar-chord-editor/src/components/Chord/Chord.tsx#L8)
 
 ___
 
@@ -76,7 +76,7 @@ ___
 
 #### Defined in
 
-[utils/notes.ts:3](https://github.com/saadtazi/saadtazi.com/blob/ac8072d/packages/guitar-chord-editor/src/utils/notes.ts#L3)
+[utils/notes.ts:3](https://github.com/saadtazi/saadtazi.com/blob/2d1d141/packages/guitar-chord-editor/src/utils/notes.ts#L3)
 
 ___
 
@@ -86,7 +86,7 @@ ___
 
 #### Defined in
 
-[utils/notes.ts:4](https://github.com/saadtazi/saadtazi.com/blob/ac8072d/packages/guitar-chord-editor/src/utils/notes.ts#L4)
+[utils/notes.ts:4](https://github.com/saadtazi/saadtazi.com/blob/2d1d141/packages/guitar-chord-editor/src/utils/notes.ts#L4)
 
 ___
 
@@ -96,7 +96,7 @@ ___
 
 #### Defined in
 
-[components/Chord/Chord.tsx:6](https://github.com/saadtazi/saadtazi.com/blob/ac8072d/packages/guitar-chord-editor/src/components/Chord/Chord.tsx#L6)
+[components/Chord/Chord.tsx:6](https://github.com/saadtazi/saadtazi.com/blob/2d1d141/packages/guitar-chord-editor/src/components/Chord/Chord.tsx#L6)
 
 ## Functions
 
@@ -116,7 +116,7 @@ ___
 
 #### Defined in
 
-[components/Chord/Chord.tsx:41](https://github.com/saadtazi/saadtazi.com/blob/ac8072d/packages/guitar-chord-editor/src/components/Chord/Chord.tsx#L41)
+[components/Chord/Chord.tsx:41](https://github.com/saadtazi/saadtazi.com/blob/2d1d141/packages/guitar-chord-editor/src/components/Chord/Chord.tsx#L41)
 
 ___
 
@@ -137,4 +137,4 @@ ___
 
 #### Defined in
 
-[utils/notes.ts:35](https://github.com/saadtazi/saadtazi.com/blob/ac8072d/packages/guitar-chord-editor/src/utils/notes.ts#L35)
+[utils/notes.ts:35](https://github.com/saadtazi/saadtazi.com/blob/2d1d141/packages/guitar-chord-editor/src/utils/notes.ts#L35)
