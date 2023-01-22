@@ -50,6 +50,7 @@ export const TunerApp = () => {
   const [frequency, setFrequency] = useState<number | undefined>();
   const [closeNote, setCloseNote] = useState<string>();
   const pitchDetector = useRef<PitchDetector<Float32Array>>();
+  const [errorMicrophone, setErrorMicrophone] = useState(false);
   const micOpenRef = useRef(false);
 
   const toggleStart = useCallback(async () => {
@@ -61,11 +62,16 @@ export const TunerApp = () => {
       micOpenRef.current = true;
 
       const mic = new Tone.UserMedia();
-      mic.open().then(() => {
-        // to test with playable notes
-        // synth.current!.connect(analyser.current!);
-        mic.connect(analyser.current!);
-      });
+      mic
+        .open()
+        .then(() => {
+          // to test with playable notes
+          // synth.current!.connect(analyser.current!);
+          mic.connect(analyser.current!);
+        })
+        .catch(() => {
+          setErrorMicrophone(true);
+        });
     }
     setStarted((v) => !v);
   }, [setStarted]);
@@ -165,56 +171,62 @@ export const TunerApp = () => {
           {started ? t('tuner.stop') : t('tuner.start')}
         </Button>
       </Grid>
-      <Grid xs={12} justifyContent="center" display="flex">
-        <Stack direction="row" spacing={2}>
-          {tuningPos !== '' &&
-            started &&
-            notes?.map((note, index) => {
-              const noteFrequency = frequencies[index];
-              const noteFrequencyStr = noteFrequency?.toFixed(2);
+      {!errorMicrophone && tuningPos && (
+        <Grid xs={12} justifyContent="center" display="flex">
+          <Stack direction="row" spacing={2}>
+            {tuningPos !== '' &&
+              started &&
+              notes?.map((note, index) => {
+                const noteFrequency = frequencies[index];
+                const noteFrequencyStr = noteFrequency?.toFixed(2);
 
-              const color = getColor(frequency || 0, noteFrequency);
+                const color = getColor(frequency || 0, noteFrequency);
 
-              return (
-                <Grid container key={note}>
-                  <Grid
-                    xs={12}
-                    justifyContent="center"
-                    display="flex"
-                    key={note}
-                  >
-                    <IconButton
-                      color={color}
-                      aria-label="play"
-                      onClick={() => play(note)}
-                      style={{
-                        color: color === 'success' ? '#4ade80' : undefined,
-                      }}
+                return (
+                  <Grid container key={note}>
+                    <Grid
+                      xs={12}
+                      justifyContent="center"
+                      display="flex"
+                      key={note}
                     >
-                      {note}
-                    </IconButton>
+                      <IconButton
+                        color={color}
+                        aria-label="play"
+                        onClick={() => play(note)}
+                        style={{
+                          color: color === 'success' ? '#4ade80' : undefined,
+                        }}
+                      >
+                        {note}
+                      </IconButton>
+                    </Grid>
+                    <Grid
+                      xs={12}
+                      justifyContent="center"
+                      display="flex"
+                      key={note}
+                    >
+                      <div style={{ fontSize: '0.7em' }}>
+                        {noteFrequencyStr} Hz
+                      </div>
+                    </Grid>
                   </Grid>
-                  <Grid
-                    xs={12}
-                    justifyContent="center"
-                    display="flex"
-                    key={note}
-                  >
-                    <div style={{ fontSize: '0.7em' }}>
-                      {noteFrequencyStr} Hz
-                    </div>
-                  </Grid>
-                </Grid>
-              );
-            })}
-        </Stack>
-      </Grid>
-      {started && closeNote && (
+                );
+              })}
+          </Stack>
+        </Grid>
+      )}
+      {errorMicrophone && (
+        <Grid xs={12} justifyContent="center" display="flex">
+          {t('tuner.microphoneError')}
+        </Grid>
+      )}
+      {started && !errorMicrophone && (
         <>
           <Grid xs={12} justifyContent="center" display="flex">
             <Gauge
               frequency={frequency}
-              note={closeNote}
               noteFrequency={Tone.Frequency(closeNote).toFrequency()}
             />
           </Grid>

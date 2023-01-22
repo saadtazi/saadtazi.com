@@ -5,7 +5,6 @@ import clsx from 'clsx';
 
 type GaugeProps = {
   frequency?: number;
-  note: string;
   noteFrequency: number;
 };
 
@@ -54,7 +53,7 @@ const GaugeContainer = styled.div`
   }
 `;
 
-export const Gauge = ({ frequency, noteFrequency, note }: GaugeProps) => {
+export const Gauge = ({ frequency, noteFrequency }: GaugeProps) => {
   const domain: [number, number] = [noteFrequency - 20, noteFrequency + 20];
   const gauge = useGauge({
     domain,

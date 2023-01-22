@@ -63,6 +63,7 @@ export const fr: LocaleData = {
     detectedFrequency: 'Fréquence Detectée',
     start: 'démarrer',
     stop: 'arrêter',
+    microphoneError: 'Oops, je ne peux pas utiliser le microphone',
   },
   cancel: 'Annuler',
   errors: {
