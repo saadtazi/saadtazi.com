@@ -63,7 +63,7 @@ export const en: LocaleData = {
     detectedFrequency: 'Detected Frequency',
     start: 'start',
     stop: 'stop',
-    microphoneError: 'Oops, I cannot use your device&apos;s microphone',
+    microphoneError: "Oops, I cannot use your device's microphone",
   },
   cancel: 'cancel',
   errors: { message404: "NooOooOOooo... We're lost.", backTo: 'back to' },
