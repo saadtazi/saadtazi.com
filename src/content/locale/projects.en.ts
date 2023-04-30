@@ -2,6 +2,18 @@ import { Project } from 'types/models';
 
 const projects: Project[] = [
   {
+    name: 'Diff Tools',
+    lead: 'simple tool to visualize diff between json, url query params, text, ...',
+    features: [],
+    tags: ['react', 'tools', 'diff'],
+    links: [
+      {
+        name: 'site',
+        url: 'diff',
+      },
+    ],
+  },
+  {
     name: 'instrument tuner',
     lead: 'a chord tuner for multiple instruments',
     features: [],
