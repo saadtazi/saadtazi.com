@@ -5,7 +5,7 @@ import Header from 'components/Header/Header';
 import Typography from '@mui/material/Typography';
 import useTranslate from 'hooks/translate';
 import PersonalLinks from 'components/PersonalLinks/PersonalLinks';
-import { HeadTitle } from 'components/HeadTitle';
+import { getPageTitle } from 'components/Header';
 
 export default function ChordPage() {
   const t = useTranslate();
@@ -13,7 +13,7 @@ export default function ChordPage() {
   return (
     <>
       <Head>
-        <HeadTitle title={t('tuner.title')} />
+        <title>{getPageTitle(t('tuner.title'))}</title>
       </Head>
       <Header disableMap={true}>
         <div className="hero-text">

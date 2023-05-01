@@ -5,7 +5,6 @@ import Header from 'components/Header/Header';
 import Typography from '@mui/material/Typography';
 import useTranslate from 'hooks/translate';
 import PersonalLinks from 'components/PersonalLinks/PersonalLinks';
-import { HeadTitle } from 'components/HeadTitle';
 
 export default function ChordPage() {
   const t = useTranslate();
@@ -13,7 +12,9 @@ export default function ChordPage() {
   return (
     <>
       <Head>
-        <HeadTitle title={t('diffTools.title')} />
+        <title>
+          {['Saad Tazi', t('diffTools.title')].filter((v) => !!v).join(' = ')}
+        </title>
       </Head>
       <Header disableMap={true}>
         <div className="hero-text">
