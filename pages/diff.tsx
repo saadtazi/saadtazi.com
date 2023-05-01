@@ -23,7 +23,7 @@ export default function ChordPage() {
           </Typography>
         </div>
       </Header>
-      <Container>
+      <Container maxWidth={false} sx={{ paddingLeft: 10, paddingRight: 10 }}>
         <DiffApp />
       </Container>
       <PersonalLinks />

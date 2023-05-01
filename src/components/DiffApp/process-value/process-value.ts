@@ -1,4 +1,4 @@
-import { processUrl } from '../process-url';
+import { processUrl, processQueryParams } from './process-url';
 import { processJson } from './process-json';
 
 export enum Type {
@@ -6,6 +6,7 @@ export enum Type {
   String = 'string',
   Json = 'json',
   Url = 'url',
+  QueryString = 'qs',
 }
 
 const queryStringRegex = /[\\?&]*[^&=]+=[^&=]+/;
@@ -17,10 +18,17 @@ export const detectType = (left: string, right: string): Type => {
     return Type.Json;
   }
 
-  // process url will always work because URLSearchParams accepts any string
-  if (queryStringRegex.test(left) && queryStringRegex.test(right)) {
+  const [, urlError1] = processUrl(left);
+  const [, urlError2] = processUrl(right);
+  if (!urlError1 && !urlError2) {
     return Type.Url;
   }
+
+  // process url will always work because URLSearchParams accepts any string
+  if (queryStringRegex.test(left) && queryStringRegex.test(right)) {
+    return Type.QueryString;
+  }
+
   return Type.String;
 };
 
@@ -28,12 +36,16 @@ export const processValue = (
   value: string,
   type: string
 ): [processedValue: string, error?: Error] => {
-  if (type === 'json') {
+  if (type === Type.Json) {
     return processJson(value);
   }
 
-  if (type === 'url') {
+  if (type === Type.Url) {
     return processUrl(value);
+  }
+
+  if (type === Type.QueryString) {
+    return processQueryParams(value);
   }
 
   // no processing needed: string
