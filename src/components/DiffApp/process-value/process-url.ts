@@ -1,6 +1,6 @@
 import jsonStringify from 'json-stable-stringify';
 
-const fromUrlQueryParams = (urlParams: URLSearchParams): [string] => {
+const fromUrlQueryParams = (urlParams: URLSearchParams) => {
   const keys = Array.from(urlParams.keys());
   const results = keys.reduce(
     (acc: Record<string, string | string[]>, key: string) => {
@@ -11,14 +11,14 @@ const fromUrlQueryParams = (urlParams: URLSearchParams): [string] => {
     {}
   );
 
-  return [jsonStringify(results, { space: 2 })];
+  return results;
 };
 
-const processQueryParams = (
+export const processQueryParams = (
   value: string
 ): [processedValue: string, error?: Error] => {
   const urlParams = new URLSearchParams(value.replace(/^\?/, ''));
-  return fromUrlQueryParams(urlParams);
+  return [jsonStringify(fromUrlQueryParams(urlParams), { space: 2 })];
 };
 
 export const processUrl = (
@@ -27,12 +27,18 @@ export const processUrl = (
   let queryParams: URLSearchParams;
   try {
     const url = new URL(value);
-    return fromUrlQueryParams(url.searchParams);
+    return [
+      jsonStringify(
+        {
+          origin: url.origin,
+          pathname: url.pathname,
+          hash: url.hash,
+          queryParams: fromUrlQueryParams(url.searchParams),
+        },
+        { space: 2 }
+      ),
+    ];
   } catch (e) {
-    try {
-      return processQueryParams(value);
-    } catch (e) {
-      return [value, new Error('please enter a valid url or query string')];
-    }
+    return [value, new Error('please enter a valid url or query string')];
   }
 };

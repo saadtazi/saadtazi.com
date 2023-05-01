@@ -74,9 +74,11 @@ export const fr: LocaleData = {
     enterText: 'json, url, query params, string...',
     inputType: 'type de données',
     autoType: 'auto',
-    urlType: 'url ou "query string"',
+    urlType: 'url',
+    queryStringType: 'query string',
     jsonType: 'json',
     stringType: 'string (diff basique)',
+    splitView: 'utiliser la vue séparée?',
   },
   cancel: 'Annuler',
   errors: {
