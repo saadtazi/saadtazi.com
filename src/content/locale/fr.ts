@@ -56,6 +56,9 @@ export const fr: LocaleData = {
     youLost: 'Perdu 😞...',
     close: 'Fermer',
   },
+  chordPlayer: {
+    title: 'Chord Player',
+  },
   tuner: {
     title: 'Accordeur de Guitare/Ukelele',
     navItem: 'Accordeur',

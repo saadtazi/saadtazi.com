@@ -8,14 +8,14 @@ import Head from 'next/head';
 
 import useTranslate from 'hooks/translate';
 import { FormattedMessage } from 'react-intl';
-import { HeadTitle } from 'components/HeadTitle';
+import { getPageTitle } from 'components/Header';
 
 export default function Index() {
   const t = useTranslate();
   return (
     <>
       <Head>
-        <HeadTitle title={t('murales.navItem')} />
+        <title>{getPageTitle(t('murales.navItem'))}</title>
       </Head>
       <Header disableMap={true}>
         <div className="hero-text">

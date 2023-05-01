@@ -7,14 +7,14 @@ import Typography from '@mui/material/Typography';
 import Head from 'next/head';
 
 import useTranslate from 'hooks/translate';
-import { HeadTitle } from 'components/HeadTitle';
+import { getPageTitle } from 'components/Header';
 
 export default function Index() {
   const t = useTranslate();
   return (
     <>
       <Head>
-        <HeadTitle title={t('stuff')} />
+        <title>{getPageTitle(t('stuff'))}</title>
       </Head>
       <Header>
         <div className="hero-text">

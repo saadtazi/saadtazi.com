@@ -10,7 +10,7 @@ import Typography from '@mui/material/Typography';
 
 import useTranslate from 'hooks/translate';
 import Head from 'next/head';
-import { HeadTitle } from 'components/HeadTitle';
+import { getPageTitle } from 'components/Header';
 
 export default function Index() {
   const locale = useLocale();
@@ -18,7 +18,7 @@ export default function Index() {
   return (
     <>
       <Head>
-        <HeadTitle title={t('home')} />
+        <title>{getPageTitle(t('home'))}</title>
       </Head>
       <Header>
         <div className="hero-text">
