@@ -89,7 +89,8 @@ export const DiffApp = () => {
               id="left-part"
               label={t('diffTools.enterText')}
               multiline
-              rows={4}
+              minRows={4}
+              maxRows={25}
               value={right}
               variant="filled"
               onChange={(e) => {
