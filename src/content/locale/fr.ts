@@ -58,12 +58,22 @@ export const fr: LocaleData = {
   },
   tuner: {
     title: 'Accordeur de Guitare/Ukelele',
+    navItem: 'Accordeur',
     tuning: 'Accordage',
     frequencyClarity: 'Clarté/Sensibilité de la detection de fréquence',
     detectedFrequency: 'Fréquence Detectée',
     start: 'démarrer',
     stop: 'arrêter',
     microphoneError: 'Oops, je ne peux pas utiliser le microphone',
+  },
+  diffTools: {
+    title: 'Outils Diff',
+    enterText: 'json, url, query params, string...',
+    inputType: 'type de données',
+    autoType: 'auto',
+    urlType: 'url ou "query string"',
+    jsonType: 'json',
+    stringType: 'string (diff basique)',
   },
   cancel: 'Annuler',
   errors: {

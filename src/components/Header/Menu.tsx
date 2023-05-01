@@ -24,7 +24,7 @@ const MyMenu: React.FC = () => {
           </div>
           -
           <div className="links">
-            <Link href="/murales">{t('murales.navItem')}</Link>
+            <Link href="/tuner">{t('tuner.navItem')}</Link>
           </div>
           -
           <div className="links">

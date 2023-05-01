@@ -5,6 +5,7 @@
 // > will display markup and comments as text in the title and hydration will likely fail
 // > and fall back to client rendering
 type HeadTitleProps = { title: string };
-export const HeadTitle = ({ title }: HeadTitleProps) => (
-  <title>{['Saad Tazi', title].join(' = ')}</title>
-);
+
+export const HeadTitle = ({ title }: HeadTitleProps) => {
+  return <title>{['Saad Tazi', title].filter((v) => !!v).join(' = ')}</title>;
+};
