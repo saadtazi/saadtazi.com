@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import ReactDiffViewer from 'react-diff-viewer-continued';
 import Grid from '@mui/system/Unstable_Grid';
 import FormControl from '@mui/material/FormControl';
@@ -13,6 +13,9 @@ import useTranslate from 'hooks/translate';
 import { Type, detectType, processValue } from './process-value';
 import { ValueError } from './DiffApp.styles';
 import { useRouter } from 'next/router';
+import LinkIcon from '@mui/icons-material/Link';
+import IconButton from '@mui/material/IconButton';
+import debounce from 'lodash/debounce';
 
 const getFirstValue = (value: string[] | string | undefined) => {
   return Array.isArray(value) ? value[0] : value;
@@ -27,6 +30,7 @@ export const DiffApp = () => {
   const [right, setRight] = useState<string>('');
   const [inputType, setInputType] = useState<string>('auto');
   const [splitView, setSplitView] = useState<boolean>(true);
+  const [canCopyUrl, setCanCopyUrl] = useState<boolean>(true);
 
   useEffect(() => {
     const { query } = router;
@@ -46,6 +50,35 @@ export const DiffApp = () => {
       setInputType(newType);
     }
   }, [router, setLeft, setRight, setInputType]);
+
+  const debouncedUpdateUrl = useMemo(
+    () =>
+      debounce((inputType: string | undefined, left: string, right: string) => {
+        if (left.length + right.length < 5000) {
+          setCanCopyUrl(true);
+          router.push({
+            query: { type: inputType, left, right },
+          });
+        } else {
+          setCanCopyUrl(false);
+          router.push({ query: {} });
+        }
+      }, 400),
+    [router, setCanCopyUrl]
+  );
+
+  const copyUrl = useCallback(() => {
+    if (canCopyUrl) {
+      navigator.clipboard.writeText(document.location.href);
+    } else {
+      const url = new URL(document.location.href);
+      url.searchParams.set('type', inputType);
+      url.searchParams.set('left', left);
+      url.searchParams.set('right', right);
+      console.log(url.toString());
+      navigator.clipboard.writeText(url.toString());
+    }
+  }, [canCopyUrl, inputType, left, right]);
 
   const usedType =
     inputType === Type.Auto ? detectType(left, right) : inputType;
@@ -68,9 +101,8 @@ export const DiffApp = () => {
               variant="filled"
               onChange={(e) => {
                 const leftValue = e.target.value;
-                router.push({
-                  query: { type: inputType, left: leftValue, right },
-                });
+                debouncedUpdateUrl(inputType, leftValue, right);
+
                 setLeft(leftValue);
               }}
             />
@@ -95,9 +127,7 @@ export const DiffApp = () => {
               variant="filled"
               onChange={(e) => {
                 const rightValue = e.target.value;
-                router.push({
-                  query: { type: inputType, left, right: rightValue },
-                });
+                debouncedUpdateUrl(inputType, left, rightValue);
                 setRight(rightValue);
               }}
             />
@@ -120,7 +150,7 @@ export const DiffApp = () => {
               label={t('diffTools.inputType')}
               onChange={(evt) => {
                 const newType = evt.target.value;
-                router.push({ query: { type: newType, left, right } });
+                debouncedUpdateUrl(newType, left, right);
                 setInputType(newType);
               }}
             >
@@ -138,8 +168,8 @@ export const DiffApp = () => {
             </Select>
           </FormControl>
         </Grid>
-        <Grid xs={6} container>
-          <Grid xs={6}>
+        <Grid xs={12} md={6} container>
+          <Grid xs={12} md={6}>
             <FormControlLabel
               value="top"
               control={
@@ -153,7 +183,7 @@ export const DiffApp = () => {
             />
           </Grid>
           {usedType !== inputType && (
-            <Grid xs={6}>
+            <Grid xs={12} md={6}>
               <Typography variant="caption" gutterBottom>
                 * using type {usedType}
               </Typography>
@@ -169,6 +199,16 @@ export const DiffApp = () => {
             splitView={splitView}
           />
         </Grid>
+      </Grid>
+      <Grid xs={12}>
+        <IconButton
+          aria-label={t('diffTools.copyUrl')}
+          disabled={!canCopyUrl}
+          title={t('diffTools.copyUrl')}
+          onClick={copyUrl}
+        >
+          <LinkIcon />
+        </IconButton>
       </Grid>
     </Grid>
   );

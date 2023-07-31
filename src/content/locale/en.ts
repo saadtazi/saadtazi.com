@@ -73,6 +73,7 @@ export const en: LocaleData = {
     title: 'Diff Tools',
     enterText: 'enter json, url, query params...',
     inputType: 'input type',
+    copyUrl: 'copy url',
     autoType: 'auto',
     urlType: 'url',
     queryStringType: 'query string',
