@@ -156,6 +156,13 @@ export function MineSweeper() {
         return;
       }
     }
+
+    // when flagged cell clicked, just remove the flag
+    if (cell.userVisibility === CellUserVisibility.FLAGGED) {
+      setNbFlagged((prevNbFlagged) => prevNbFlagged - 1);
+      changeVisibility(x, y, CellUserVisibility.DEFAULT, false);
+      return;
+    }
     // regular click
     changeVisibility(x, y, CellUserVisibility.REVEALED, true);
   };
