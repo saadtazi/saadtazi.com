@@ -81,6 +81,12 @@ export const fr: LocaleData = {
     stringType: 'string (diff basique)',
     splitView: 'utiliser la vue séparée?',
   },
+  hanoiTower: {
+    title: 'Tour de Hanoï',
+    nbDisks: 'Nombre de disques',
+    nbMoves: 'Nombre de mouvements',
+    gameSize: 'Taille du jeu',
+  },
   cancel: 'Annuler',
   errors: {
     message404: 'NooOooOOooon... Nous sommes perdus.',

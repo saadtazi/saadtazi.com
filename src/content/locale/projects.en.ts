@@ -2,18 +2,6 @@ import { Project } from 'types/models';
 
 const projects: Project[] = [
   {
-    name: 'Diff Tools',
-    lead: 'simple tool to visualize diff between json, url query params, text, ...',
-    features: [],
-    tags: ['react', 'tools', 'diff'],
-    links: [
-      {
-        name: 'site',
-        url: 'diff',
-      },
-    ],
-  },
-  {
     name: 'instrument tuner',
     lead: 'a chord tuner for multiple instruments',
     features: [],
@@ -22,6 +10,29 @@ const projects: Project[] = [
       {
         name: 'site',
         url: 'tuner',
+      },
+    ],
+  },
+  {
+    name: 'Tower of Hanoi',
+    lead: 'Can you solve this mathematical puzzle?',
+    tags: ['react', 'game'],
+    links: [
+      {
+        name: 'site',
+        url: 'hanoi-tower',
+      },
+    ],
+  },
+  {
+    name: 'Diff Tools',
+    lead: 'simple tool to visualize diff between json, url query params, text, ...',
+    features: [],
+    tags: ['react', 'tools', 'diff'],
+    links: [
+      {
+        name: 'site',
+        url: 'diff',
       },
     ],
   },

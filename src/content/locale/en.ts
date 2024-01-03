@@ -81,6 +81,12 @@ export const en: LocaleData = {
     stringType: 'string (basic diff)',
     splitView: 'use split view?',
   },
+  hanoiTower: {
+    title: 'Hanoi Tower',
+    nbDisks: 'Number of disks',
+    nbMoves: 'Number of moves',
+    gameSize: 'Game Size',
+  },
   cancel: 'cancel',
   errors: { message404: "NooOooOOooo... We're lost.", backTo: 'back to' },
   notFound: 'not found',

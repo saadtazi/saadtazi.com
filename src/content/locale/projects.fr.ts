@@ -2,18 +2,6 @@ import { Project } from 'types/models';
 
 const projects: Project[] = [
   {
-    name: 'Outils Diff',
-    lead: 'outils pour visualizer les différences entre 2 chaines de caractères: json, url query params, text, ...',
-    features: [],
-    tags: ['react', 'outils', 'diff'],
-    links: [
-      {
-        name: 'site',
-        url: 'diff',
-      },
-    ],
-  },
-  {
     name: "accordeur d'instrument",
     lead: 'un accordeur pour plusieurs instruments',
     features: [],
@@ -25,6 +13,30 @@ const projects: Project[] = [
       },
     ],
   },
+  {
+    name: 'Tower of Hanoi',
+    lead: 'Pourrez-vous résoudre ce problème mathématique?',
+    tags: ['react', 'jeu'],
+    links: [
+      {
+        name: 'site',
+        url: 'hanoi-tower',
+      },
+    ],
+  },
+  {
+    name: 'Outils Diff',
+    lead: 'outils pour visualizer les différences entre 2 chaines de caractères: json, url query params, text, ...',
+    features: [],
+    tags: ['react', 'outils', 'diff'],
+    links: [
+      {
+        name: 'site',
+        url: 'diff',
+      },
+    ],
+  },
+
   {
     name: 'guitar-chord',
     lead: "un composant react qui permet d'afficher un accord de guitare/ukulele... (editable and non-editable)",
