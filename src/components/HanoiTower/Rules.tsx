@@ -14,8 +14,8 @@ export const HanoiTowerRules = () => {
               <ul>
                 <li>Un seul disque peut être déplacé à la fois.</li>
                 <li>
-                  Seul le disque supérieur d'une pile peut être transféré vers
-                  le haut d'une autre pile ou sur une tige vide.
+                  Seul le disque supérieur d&apos;une pile peut être transféré
+                  vers le haut d&apos;une autre pile ou sur une tige vide.
                 </li>
                 <li>
                   Les disques plus grands ne peuvent pas être empilés sur des
