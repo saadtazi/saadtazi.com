@@ -21,7 +21,8 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Install deps
-        run: npm ci
+        # due to react-diff-viewer-continued: 4.0.3 (no support for react 19)
+        run: npm ci --force
 
       - name: Lint
         run: npm run lint
