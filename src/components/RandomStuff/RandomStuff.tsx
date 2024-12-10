@@ -39,7 +39,7 @@ const RandomStuff = () => {
       <Grid container spacing={3}>
         {stuff.map((Component, i) => {
           return (
-            <Grid key={`component-${i}`} size={{ xs: 12 }} sm={6}>
+            <Grid key={`component-${i}`} size={{ xs: 12, sm: 6 }}>
               <Card>
                 <CardContent></CardContent>
                 <Component />

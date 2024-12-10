@@ -91,7 +91,7 @@ export const Chord = ({
       {/* strings */}
       {getArrayOfSize(nbStrings).map((chord) => {
         return (
-          <Fragment key={chord}>
+          <g key={chord}>
             <OpenString
               aria-label="open-string"
               x={spaceAround + chord * chordSpacing - openStringSize / 2}
@@ -149,13 +149,13 @@ export const Chord = ({
                 />
               );
             })}
-          </Fragment>
+          </g>
         );
       })}
       {/* frets */}
       {Array.from(Array(nbFrets + 1).keys()).map((fret) => {
         return (
-          <Fragment key={fret}>
+          <g key={fret}>
             {position === 1 && fret === 0 && (
               <line
                 aria-label="first-fret-line"
@@ -186,7 +186,7 @@ export const Chord = ({
               stroke={color}
               strokeWidth={fretLinesStrokeWidth}
             />
-          </Fragment>
+          </g>
         );
       })}
     </svg>
