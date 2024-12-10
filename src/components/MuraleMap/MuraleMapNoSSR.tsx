@@ -10,7 +10,7 @@ import { fromFeature, getCenter } from 'utils/murale';
 import { StyledMuraleMap } from './MuraleMap.styles';
 import { LatLngExpression } from 'leaflet';
 import { useWindowSize } from 'react-use';
-import Grid from '@mui/material/Unstable_Grid2/Grid2';
+import Grid from '@mui/material/Grid2';
 
 const MtlCenter: LatLngExpression = [45.5017, -73.5673];
 
@@ -42,7 +42,7 @@ const MuraleMap: React.FC = () => {
   return (
     <StyledMuraleMap withMurale={!!murale} windowHeight={height}>
       <Grid container spacing={2}>
-        <Grid xs={12} sm={murale ? 6 : 12}>
+        <Grid size={{ xs: 12, sm: !!murale ? 6 : 12 }}>
           <MapContainer
             className="map"
             zoom={13}
@@ -74,7 +74,7 @@ const MuraleMap: React.FC = () => {
           </MapContainer>
         </Grid>
         {murale && (
-          <Grid xs={12} sm={6}>
+          <Grid size={{ xs: 12, sm: 6 }}>
             <MuraleInfoCard
               murale={murale}
               onClose={() => setMurale(undefined)}

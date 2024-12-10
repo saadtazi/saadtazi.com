@@ -8,7 +8,7 @@ type TimerProps = {
 };
 export function Timer({ action, onUpdate }: TimerProps) {
   const [value, setValue] = useState(0);
-  const timerRef = useRef<NodeJS.Timer | number>();
+  const timerRef = useRef<NodeJS.Timer | number>(undefined);
   const initRef = useRef(false);
   const t = useTranslate();
 

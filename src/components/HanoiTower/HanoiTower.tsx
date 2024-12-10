@@ -8,7 +8,7 @@ import { useHanoiTower } from './use-hanoi-tower';
 import { Tower } from './Tower';
 import { Button, Card, CardContent, TextField } from '@mui/material';
 import Slider from '@mui/material/Slider';
-import Grid from '@mui/system/Unstable_Grid';
+import Grid from '@mui/material/Grid2';
 import useTranslate from 'hooks/translate';
 
 import {
@@ -54,10 +54,10 @@ export default function HanoiTower() {
   return (
     <>
       <Grid container spacing={2}>
-        <Grid xs={12}>
+        <Grid size={{ xs: 12 }}>
           {t('hanoiTower.nbMoves')}: {nbMoves}
         </Grid>
-        <Grid xs={6}>
+        <Grid size={{ xs: 6 }}>
           {t('hanoiTower.gameSize')}
           <Slider
             getAriaLabel={() => 'game size'}
@@ -72,7 +72,7 @@ export default function HanoiTower() {
             getAriaValueText={() => `${scale * 100}%`}
           />
         </Grid>
-        <Grid xs={7}>
+        <Grid size={{ xs: 7 }}>
           <TextField
             fullWidth
             label={t('hanoiTower.nbDisks')}
@@ -94,7 +94,7 @@ export default function HanoiTower() {
             Reset
           </Button>
         </Grid>
-        <Grid xs={12}>
+        <Grid size={{ xs: 12 }}>
           <Card style={{ backgroundColor: 'transparent' }}>
             <CardContent>
               <DndContext

@@ -1,5 +1,5 @@
 import { Card, CardContent, Paper } from '@mui/material';
-import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
+import Grid from '@mui/material/Grid2'; // Grid version 2
 import { useRouter } from 'next/router';
 
 export const HanoiTowerRules = () => {
@@ -7,7 +7,7 @@ export const HanoiTowerRules = () => {
 
   return (
     <Grid container>
-      <Grid xs={12}>
+      <Grid size={{ xs: 12 }}>
         <Card>
           <CardContent>
             {locale === 'fr' ? (
@@ -37,9 +37,4 @@ export const HanoiTowerRules = () => {
       </Grid>
     </Grid>
   );
-
-  if (locale === 'fr') {
-    return <div>coucou</div>;
-  }
-  return <div>coucou en</div>;
 };

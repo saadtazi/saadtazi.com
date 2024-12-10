@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import ReactDiffViewer from 'react-diff-viewer-continued';
-import Grid from '@mui/system/Unstable_Grid';
+import Grid from '@mui/material/Grid2';
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 import TextField from '@mui/material/TextField';
@@ -88,8 +88,13 @@ export const DiffApp = () => {
 
   return (
     <Grid container spacing={2}>
-      <Grid container xs={12} md={6} justifyContent="center" display="flex">
-        <Grid xs={12}>
+      <Grid
+        container
+        size={{ xs: 12, md: 6 }}
+        justifyContent="center"
+        display="flex"
+      >
+        <Grid size={{ xs: 12 }}>
           <FormControl fullWidth>
             <TextField
               id="left-part"
@@ -109,13 +114,18 @@ export const DiffApp = () => {
           </FormControl>
         </Grid>
         {leftError && (
-          <Grid xs={12}>
+          <Grid size={{ xs: 12 }}>
             <ValueError>{leftError.message}</ValueError>
           </Grid>
         )}
       </Grid>
-      <Grid container xs={12} md={6} justifyContent="center" display="flex">
-        <Grid xs={12}>
+      <Grid
+        container
+        size={{ xs: 12, md: 6 }}
+        justifyContent="center"
+        display="flex"
+      >
+        <Grid size={{ xs: 12 }}>
           <FormControl fullWidth>
             <TextField
               id="left-part"
@@ -134,13 +144,13 @@ export const DiffApp = () => {
           </FormControl>
         </Grid>
         {rightError && (
-          <Grid xs={12}>
+          <Grid size={{ xs: 12 }}>
             <ValueError>{rightError.message}</ValueError>
           </Grid>
         )}
       </Grid>
-      <Grid container xs={12} justifyContent="center" display="flex">
-        <Grid xs={6}>
+      <Grid container size={{ xs: 12 }} justifyContent="center" display="flex">
+        <Grid size={{ xs: 6 }}>
           <FormControl fullWidth>
             <InputLabel id="input-type">{t('diffTools.inputType')}</InputLabel>
             <Select
@@ -168,8 +178,8 @@ export const DiffApp = () => {
             </Select>
           </FormControl>
         </Grid>
-        <Grid xs={12} md={6} container>
-          <Grid xs={12} md={6}>
+        <Grid size={{ xs: 12, md: 6 }} container>
+          <Grid size={{ xs: 12, md: 6 }}>
             <FormControlLabel
               value="top"
               control={
@@ -183,7 +193,7 @@ export const DiffApp = () => {
             />
           </Grid>
           {usedType !== inputType && (
-            <Grid xs={12} md={6}>
+            <Grid size={{ xs: 12, md: 6 }}>
               <Typography variant="caption" gutterBottom>
                 * using type {usedType}
               </Typography>
@@ -191,8 +201,8 @@ export const DiffApp = () => {
           )}
         </Grid>
       </Grid>
-      <Grid container xs={12} justifyContent="center" display="flex">
-        <Grid xs={12}>
+      <Grid container size={{ xs: 12 }} justifyContent="center" display="flex">
+        <Grid size={{ xs: 12 }}>
           <ReactDiffViewer
             oldValue={processedLeft}
             newValue={processedRight}
@@ -200,7 +210,7 @@ export const DiffApp = () => {
           />
         </Grid>
       </Grid>
-      <Grid xs={12}>
+      <Grid size={{ xs: 12 }}>
         <IconButton
           aria-label={t('diffTools.copyUrl')}
           disabled={!canCopyUrl}

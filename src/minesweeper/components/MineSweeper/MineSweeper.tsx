@@ -21,7 +21,7 @@ import {
   SettingsType,
 } from 'minesweeper/settings';
 import Button from '@mui/material/Button';
-import MuiGrid from '@mui/material/Unstable_Grid2';
+import MuiGrid from '@mui/material/Grid2';
 
 import { Win } from 'minesweeper/components/Win';
 import { Lose } from 'minesweeper/components/Lose';
@@ -259,15 +259,15 @@ export function MineSweeper() {
         </MuiGrid>
       </MuiGrid>
       <MuiGrid container spacing={2}>
-        <MuiGrid xs={12} sm={2}>
+        <MuiGrid size={{ xs: 12, sm: 2 }}>
           <FlagMode toggle={toggleFlagMode} flagMode={flagMode} />
         </MuiGrid>
-        <MuiGrid xs={6} sm={5}>
+        <MuiGrid size={{ xs: 6, sm: 5 }}>
           <h3>
             {t('minesweeper.Identified/Total')}: {nbFlagged}/{grid.nbMines}
           </h3>
         </MuiGrid>
-        <MuiGrid xs={12} sm={5} xsOffset="auto">
+        <MuiGrid size={{ xs: 12, sm: 5 }} offset={{ xs: 'auto' }}>
           <Timer
             action={
               gameStatus === GameStatus.STARTED

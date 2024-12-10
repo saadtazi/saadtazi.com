@@ -25,7 +25,7 @@ export const getDefaultIcon = (options?: L.IconOptions) => {
 export const getMarker = (
   icon: L.Icon,
   latlng: L.LatLngExpression,
-  children: React.ReactElement,
+  children: React.ReactElement<any>,
   onMarkerClick: (...args: any) => void
 ) => {
   return L.marker(latlng, { icon })

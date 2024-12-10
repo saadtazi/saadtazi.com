@@ -8,7 +8,7 @@ import {
 } from 'react';
 import * as Tone from 'tone';
 import Button from '@mui/material/Button';
-import Grid from '@mui/system/Unstable_Grid';
+import Grid from '@mui/material/Grid2';
 import { tunings } from './tunings';
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
@@ -41,15 +41,15 @@ const getColor = (
 export const TunerApp = () => {
   const t = useTranslate();
 
-  const synth = useRef<Tone.Sampler | Tone.Synth>();
-  const analyser = useRef<Tone.Waveform>();
-  const requestAnimationRef = useRef<number>();
+  const synth = useRef<Tone.Sampler | Tone.Synth>(undefined);
+  const analyser = useRef<Tone.Waveform>(undefined);
+  const requestAnimationRef = useRef<number>(undefined);
   const [started, setStarted] = useState(false);
   const [tuningPos, setTuningPos] = useState<string>('0');
   const [clarity, setClarity] = useState<number>(0.95);
   const [frequency, setFrequency] = useState<number | undefined>();
   const [closeNote, setCloseNote] = useState<string>();
-  const pitchDetector = useRef<PitchDetector<Float32Array>>();
+  const pitchDetector = useRef<PitchDetector<Float32Array>>(undefined);
   const [errorMicrophone, setErrorMicrophone] = useState(false);
   const micOpenRef = useRef(false);
 
@@ -136,7 +136,7 @@ export const TunerApp = () => {
 
   return (
     <Grid container spacing={2}>
-      <Grid xs={12} justifyContent="center" display="flex">
+      <Grid size={{ xs: 12 }} justifyContent="center" display="flex">
         <FormControl fullWidth>
           <InputLabel id="tuning-selector">{t('tuner.tuning')}</InputLabel>
           <Select
@@ -153,7 +153,7 @@ export const TunerApp = () => {
           </Select>
         </FormControl>
       </Grid>
-      <Grid xs={12} justifyContent="center" display="flex">
+      <Grid size={{ xs: 12 }} justifyContent="center" display="flex">
         <Typography>{t('tuner.frequencyClarity')}</Typography>
         <Slider
           getAriaLabel={() => 'Chord size (%)'}
@@ -166,13 +166,13 @@ export const TunerApp = () => {
           getAriaValueText={() => `${clarity * 100}%`}
         />
       </Grid>
-      <Grid xs justifyContent="center" display="flex">
+      <Grid size={{ xs: 12 }} justifyContent="center" display="flex">
         <Button onClick={toggleStart}>
           {started ? t('tuner.stop') : t('tuner.start')}
         </Button>
       </Grid>
       {!errorMicrophone && tuningPos && (
-        <Grid xs={12} justifyContent="center" display="flex">
+        <Grid size={{ xs: 12 }} justifyContent="center" display="flex">
           <Stack direction="row" spacing={2}>
             {tuningPos !== '' &&
               started &&
@@ -185,7 +185,7 @@ export const TunerApp = () => {
                 return (
                   <Grid container key={note}>
                     <Grid
-                      xs={12}
+                      size={{ xs: 12 }}
                       justifyContent="center"
                       display="flex"
                       key={note}
@@ -202,7 +202,7 @@ export const TunerApp = () => {
                       </IconButton>
                     </Grid>
                     <Grid
-                      xs={12}
+                      size={{ xs: 12 }}
                       justifyContent="center"
                       display="flex"
                       key={note}
@@ -218,25 +218,25 @@ export const TunerApp = () => {
         </Grid>
       )}
       {errorMicrophone && (
-        <Grid xs={12} justifyContent="center" display="flex">
+        <Grid size={{ xs: 12 }} justifyContent="center" display="flex">
           {t('tuner.microphoneError')}
         </Grid>
       )}
       {started && !errorMicrophone && (
         <>
-          <Grid xs={12} justifyContent="center" display="flex">
+          <Grid size={{ xs: 12 }} justifyContent="center" display="flex">
             <Gauge
               frequency={frequency}
               noteFrequency={Tone.Frequency(closeNote).toFrequency()}
             />
           </Grid>
-          <Grid xs={12} justifyContent="center" display="flex">
+          <Grid size={{ xs: 12 }} justifyContent="center" display="flex">
             <Typography variant="h3">{closeNote}</Typography>
           </Grid>
         </>
       )}
       {started && frequency && (
-        <Grid xs={12} justifyContent="center" display="flex">
+        <Grid size={{ xs: 12 }} justifyContent="center" display="flex">
           <Typography>
             {t('tuner.detectedFrequency')}: {frequency?.toFixed(2)} Hz
           </Typography>

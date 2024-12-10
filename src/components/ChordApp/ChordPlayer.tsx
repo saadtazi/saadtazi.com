@@ -33,7 +33,7 @@ export const ChordPlayer = ({
   const currentOpenChords = useRef(openChords);
 
   const [selected, setSelected] = useState<SelectedFrets>([]);
-  const synth = useRef<Tone.Sampler>();
+  const synth = useRef<Tone.Sampler>(undefined);
 
   const onChange = (newSelected: SelectedFrets) => {
     setSelected(newSelected);

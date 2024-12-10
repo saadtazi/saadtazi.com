@@ -5,7 +5,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import Slider from '@mui/material/Slider';
 import TextField from '@mui/material/TextField';
-import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
+import Grid from '@mui/material/Grid2'; // Grid version 2
 import { useState } from 'react';
 import { ChordPlayer } from './ChordPlayer';
 import { Chord } from 'guitar-chord-editor';
@@ -32,7 +32,7 @@ export const ChordApp = () => {
 
   return (
     <Grid container spacing={2}>
-      <Grid xs={3}>
+      <Grid size={{ xs: 3 }}>
         <TextField
           label={'Position'}
           fullWidth
@@ -44,7 +44,7 @@ export const ChordApp = () => {
         />
       </Grid>
 
-      <Grid xs={3}>
+      <Grid size={{ xs: 3 }}>
         <TextField
           label={'Space Around'}
           fullWidth
@@ -59,7 +59,7 @@ export const ChordApp = () => {
           value={spaceAround === undefined ? '' : spaceAround}
         />
       </Grid>
-      <Grid xs={3}>
+      <Grid size={{ xs: 3 }}>
         <TextField
           label={'stringSpacing'}
           fullWidth
@@ -74,7 +74,7 @@ export const ChordApp = () => {
           value={stringSpacing === undefined ? '' : stringSpacing}
         />
       </Grid>
-      <Grid xs={3}>
+      <Grid size={{ xs: 3 }}>
         <TextField
           label={'fretSpacing'}
           fullWidth
@@ -90,7 +90,7 @@ export const ChordApp = () => {
         />
       </Grid>
 
-      <Grid xs={3}>
+      <Grid size={{ xs: 3 }}>
         <TextField
           label={'stringStrokeWidth'}
           fullWidth
@@ -106,7 +106,7 @@ export const ChordApp = () => {
         />
       </Grid>
 
-      <Grid xs={3}>
+      <Grid size={{ xs: 3 }}>
         <TextField
           label={'fretLinesStrokeWidth'}
           fullWidth
@@ -122,7 +122,7 @@ export const ChordApp = () => {
         />
       </Grid>
 
-      <Grid xs={3}>
+      <Grid size={{ xs: 3 }}>
         <TextField
           label={'fingerRadius'}
           fullWidth
@@ -138,7 +138,7 @@ export const ChordApp = () => {
         />
       </Grid>
 
-      <Grid xs={3}>
+      <Grid size={{ xs: 3 }}>
         <TextField
           label={'openStringSize'}
           fullWidth
@@ -154,7 +154,7 @@ export const ChordApp = () => {
         />
       </Grid>
 
-      <Grid xs={3}>
+      <Grid size={{ xs: 3 }}>
         <TextField
           label={'openStringSize'}
           fullWidth
@@ -170,7 +170,7 @@ export const ChordApp = () => {
         />
       </Grid>
 
-      <Grid xs={6}>
+      <Grid size={{ xs: 6 }}>
         <TextField
           label={'nbFrets'}
           fullWidth
@@ -186,7 +186,7 @@ export const ChordApp = () => {
         />
       </Grid>
 
-      <Grid xs={6}>
+      <Grid size={{ xs: 6 }}>
         <FormControl fullWidth>
           <InputLabel id="instrument-label">Instrument</InputLabel>
           <Select
@@ -203,7 +203,7 @@ export const ChordApp = () => {
         </FormControl>
       </Grid>
 
-      <Grid xs={12}>
+      <Grid size={{ xs: 12 }}>
         <Slider
           getAriaLabel={() => 'Chord size (%)'}
           value={size}
@@ -215,7 +215,7 @@ export const ChordApp = () => {
         />
       </Grid>
 
-      <Grid xs={12}>
+      <Grid size={{ xs: 12 }}>
         <Typography variant="h4" align="center">
           Editable
         </Typography>
@@ -234,7 +234,7 @@ export const ChordApp = () => {
           />
         </Container>
       </Grid>
-      <Grid xs={12}>
+      <Grid size={{ xs: 12 }}>
         <Typography variant="h4" align="center">
           Read-only Examples
         </Typography>
@@ -247,7 +247,7 @@ export const ChordApp = () => {
           />
         </Container>
       </Grid>
-      <Grid xs={12}>
+      <Grid size={{ xs: 12 }}>
         <Container style={{ maxWidth: `${size}vw`, maxHeight: `${size}vh` }}>
           <Chord
             nbFrets={5}

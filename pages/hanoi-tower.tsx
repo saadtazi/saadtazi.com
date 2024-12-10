@@ -5,7 +5,7 @@ import Typography from '@mui/material/Typography';
 import useTranslate from 'hooks/translate';
 import HanoiTower from 'components/HanoiTower/HanoiTower';
 import PersonalLinks from 'components/PersonalLinks/PersonalLinks';
-import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
+import Grid from '@mui/material/Grid2'; // Grid version 2
 import { HanoiTowerRules } from 'components/HanoiTower/Rules';
 
 export default function ChordPage() {
@@ -27,10 +27,10 @@ export default function ChordPage() {
       </Header>
       <Container>
         <Grid container>
-          <Grid xs={12}>
+          <Grid size={{ xs: 12 }}>
             <HanoiTowerRules />
           </Grid>
-          <Grid xs={12} style={{ marginTop: 20 }}>
+          <Grid size={{ xs: 12 }} style={{ marginTop: 20 }}>
             <HanoiTower />
           </Grid>
         </Grid>
